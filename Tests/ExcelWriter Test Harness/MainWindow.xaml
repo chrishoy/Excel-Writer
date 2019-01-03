@@ -1,0 +1,23 @@
+﻿<Window x:Class="ExcelWriter.TestHarness.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+      <StackPanel>
+        <Button Click="ExcelMetadataBased_OnClick"
+                Margin="10, 50, 10, 10">
+          Sample Report - Excel(Document)MetadataBased
+        </Button>
+        <Button Click="ExportMetadataBased_OnClick"
+                Margin="10">
+          Sample Report - ExportMetadataBased
+        </Button>
+
+        <Button Click="GenerateStackedBarChartReport_OnClick"
+                Margin="10">
+          Stacked Bar Chart (Export Metadata Based)
+        </Button>
+        
+      </StackPanel>
+    </Grid>
+</Window>

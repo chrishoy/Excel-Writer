@@ -1,0 +1,34 @@
+﻿<ExcelDocumentMetadata xmlns="clr-namespace:Gam.MM.Framework.Export.Map;assembly=MM.Framework.Export.Map"
+                       TemplateFileName="ReportMetadataWorkbook.xlsx">
+
+    <!-- ====================================== -->
+    <!--           DOCUMENT METADATA            -->
+    <!--  PULLS TOGETHER TEMPLATE RESOURCES IN  -->
+    <!--     ORDER TO CONSTRUCT A DOCUMENT      -->
+    <!-- ====================================== -->
+
+    <ExcelDocumentMetadata.Resources>
+        <ResourceCollection>
+            <!-- to pull in resources for a central package add as MergeResources here -->
+            <!-- at runtime these will be merged from the supplied ResourcePackage     -->
+            <ResourceCollection.MergeResources>
+                <ResourceMetadata Source="ReportTemplates" />
+            </ResourceCollection.MergeResources>
+        </ResourceCollection>
+    </ExcelDocumentMetadata.Resources>
+
+    <!-- Allowable content for Sheets is SheetContainer or Sheet (perhaps both of type SheetBase) -->
+    <ExcelDocumentMetadata.Sheets>
+
+        <!-- ==================================================== -->
+        <!-- Sheet which will some content based on data          -->
+        <!-- supplied by a DataPart                               -->
+        <!-- ==================================================== -->
+        <Sheet SheetName="Property Map">
+            <ContentControl PartId="PropertyMapDataPart"
+                            ContentKey="PropertyMapTemplate" />
+        </Sheet>
+
+    </ExcelDocumentMetadata.Sheets>
+
+</ExcelDocumentMetadata>

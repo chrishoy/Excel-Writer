@@ -1,0 +1,80 @@
+﻿<map:TemplateCollection xmlns:converters="clr-namespace:Gam.MM.Resources.Converters;assembly=MM.Resources"             
+                        xmlns:map="clr-namespace:Gam.MM.Framework.Export.Map;assembly=MM.Framework.Export.Map"
+                        TemplateFileName="HoldingTemplate.xlsx">
+
+    <map:Template DataTemplateSheet="_CorrelationMatrixTemplate"
+                  TemplateId="Analytics.CorrelationMatrixTemplate"
+                  Title="{map:Binding Title}">
+        <map:Table Header="{map:Binding Header}"
+                   ItemsSource="{map:Binding HoldingCorrelation}">
+            <map:Table.Properties>
+                <map:Property Header="Sample Frequency"
+                              Value="{map:Binding SampleFrequencyDescription}"
+                              CellWidth="200"/>
+            </map:Table.Properties>
+            <map:TableColumn DisplayMember="Holding.Name"
+                             Header="Name"
+                             Width="200"/>
+            <map:TableColumn CellStyleKey="Percent2DPCellExport"
+                             DisplayMember="Holding.Weight"
+                             Header="Name"
+                             Width="200"/>
+        </map:Table>
+    </map:Template>
+
+    <map:Template DataTemplateSheet="_AllocationDataTemplate"
+                  PresentationTemplateSheet="AllocationChartTemplate"
+                  TemplateId="HoldingAnalysis.AllocationsTemplate"
+                  Title="{map:Binding Title}">
+
+        <map:Table Header="{map:Binding Header}"
+                   ItemsSource="{map:Binding Allocations}"
+                   SubHeader="{map:Binding SubHeader}">
+
+            <map:Table.Properties>
+                <map:Property Header="Sample Frequency"
+                              Value="{map:Binding SampleFrequencyDescription}"
+                              CellWidth="200"/>
+            </map:Table.Properties>
+
+            <map:TableColumn DisplayMember="Category"
+                             Header="Category"
+                             Width="60"/>
+            <map:TableColumn DisplayMember="Description"
+                             Header="Category Description"
+                             Width="150"/>
+            <map:TableColumn CellStyleKey="Number2DPCellExport"
+                             DisplayMember="Value"
+                             Header="Value"
+                             Width="100"/>
+            <map:TableColumn CellStyleKey="Number2DPCellExport"
+                             DisplayMember="ValueLong"
+                             Header="Value Long"
+                             Width="120"/>
+            <map:TableColumn CellStyleKey="Number2DPCellExport"
+                             DisplayMember="ValueShort"
+                             Header="Value Short"
+                             Width="120"/>
+        </map:Table>
+    </map:Template>
+
+    <map:Template DataTemplateSheet="_AllocationHistoryDataTemplate"
+                  PresentationTemplateSheet="AllocationHistoryChartTemplate"
+                  TemplateId="HoldingAnalysis.AllocationHistoryDataTemplate"
+                  Title="{map:Binding Title}">
+        <map:Table Header="{map:Binding Header}"
+                   ItemsSource="{map:Binding ExportRows}"
+                   SubHeader="{map:Binding SubHeader}">
+            <map:Table.Properties>
+                <map:Property Header="Sample Frequency"
+                              Value="{map:Binding SampleFrequencyDescription}"
+                              CellWidth="200"/>
+            </map:Table.Properties>
+            <map:TableColumn CellStyleKey="DateCellExport"
+                             DisplayMember="Column"
+                             Header="Value date"
+                             Width="100"/>
+        </map:Table>
+    </map:Template>
+
+</map:TemplateCollection>

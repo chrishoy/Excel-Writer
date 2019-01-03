@@ -1,0 +1,265 @@
+﻿<TemplateCollection xmlns="clr-namespace:ExcelWriter;assembly=ExcelWriter"
+                    TemplateFileName="ReportTemplateWorkbook.xlsx">
+
+    <!-- ============================================================= -->
+    <!--   WE MAY SPECIFY MORE LOCALY SCOPED STYLE RESOURCES HERE,     -->
+    <!--   WHICH CAN POTENTIALLY SUPPLEMENT EXISTING STYLES            -->
+    <!--   IF WE WISH...                                               -->
+    <!-- ============================================================= -->
+    <TemplateCollection.StyleResources>
+
+        <CellStyle Key="SubHeaderExportAlignLeft"
+                   BasedOnKey="SubHeaderExport"
+                   FontSize="12"
+                   TextAlignment="Left" />
+        
+        <!-- GAM Green Border -->
+        <CellStyle Key="BorderedCells"
+                   BorderThickness="2"
+                   BorderColour="#006666" />
+
+        <!-- GAM Green Border -->
+        <CellStyle Key="ThinBorderedCells"
+                   BorderThickness="1"
+                   BorderColour="#006666" />
+    
+    </TemplateCollection.StyleResources>
+    
+    <!-- ============================================================= -->
+    <!--   WE MAY SPECIFY MORE LOCALY SCOPED RE-USABLE                 -->
+    <!--   MAP RESOURCES HERE.....                                     -->
+    <!-- ============================================================= -->
+    <TemplateCollection.Maps>
+
+        <ChartTemplate Key="Template.StackedBarChart"
+                       TemplateChartName="Template.StackedBarChart"
+                       TemplateSheetName="_StackedBarChartTemplate" />
+        
+        <ChartTemplate Key="Template.StackedPyramidChart"
+                       TemplateChartName="Template.StackedPyramidChart"
+                       TemplateSheetName="_StackedBarChartTemplate"/>
+
+        <ShapeTemplate Key="Template.SeriesShapeMarker"
+                       TemplateShapeName="Template.SeriesMarkerShape"
+                       TemplateSheetName="_StackedBarChartTemplate" />
+
+        <!-- Shape which is used as a legend marker -->
+        <Shape Key="LegendShape"
+               FillColour="{Binding}"
+               ShapeTemplateKey="Template.SeriesShapeMarker"
+               Width="3" Height="15">
+            
+            <Shape.Placement>
+                <Placement Height="10"
+                           Width="2"
+                           VerticalOffset="2.5"
+                           HorizontalOffset="0.5" />
+            </Shape.Placement>
+            
+        </Shape>
+
+        <!-- This is the stacked bar-chart with a heading -->
+        <StackPanel Key="StackedBarChartWithHeading"
+                    Orientation="Vertical"
+                    CellStyleKey="BorderedCells">
+
+            <!-- Cell that spans across the page as a heading -->
+            <Cell CellStyleKey="SubHeaderExport"
+                  SpanLastColumn="True"
+                  Value="Example Stacked Bar Chart" />
+
+            <!-- Spacer Cell -->
+            <Cell Height="10" />
+
+            <!-- A StackPanel which horizontally spaces the chart and legend/table -->
+            <StackPanel Orientation="Horizontal"
+                        SpanLastColumn="True">
+
+                <!-- Spacer Cell -->
+                <Cell Width="3" />
+
+                <!-- Chart - Stacked Bar -->
+                <Chart ColumnSpan="3"
+                       Width="10"
+                       RowSpan="10"
+                       TableDataKey="StackedBarChart.TableData"
+                       ChartTemplateKey="Template.StackedBarChart" />
+
+                <!-- Spacer Cell -->
+                <Cell Width="3" />
+
+                <!-- The Table (plus its data which is re-used by charts) -->
+                <StackPanel CellStyleKey="ThinBorderedCells">
+                    <Table TableDataKey="StackedBarChart.TableData" />
+                </StackPanel>
+
+                <!-- Spacer Cell -->
+                <Cell Width="3" />
+
+            </StackPanel>
+
+            <!-- Spacer Cell -->
+            <Cell Height="10" />
+
+        </StackPanel>
+
+        <!-- This is the stacked bar-chart with a heading -->
+        <StackPanel Key="StackedPyramidChartWithHeading"
+                    Orientation="Vertical"
+                    CellStyleKey="BorderedCells">
+
+            <!-- Cell that spans across the page as a heading -->
+            <Cell CellStyleKey="SubHeaderExport"
+                  SpanLastColumn="True"
+                  Value="Example Pyramid Chart" />
+
+            <!-- Spacer Cell -->
+            <Cell Height="10" />
+
+            <!-- A StackPanel which horizontally spaces the chart and legend/table -->
+            <StackPanel Orientation="Horizontal"
+                        SpanLastColumn="True">
+
+                <!-- Spacer Cell -->
+                <Cell Width="3" />
+
+                <!-- Chart - Stacked Bar -->
+                <Chart ColumnSpan="3"
+                       Width="10"
+                       RowSpan="10"
+                       TableDataKey="StackedBarChart.TableData"
+                       ChartTemplateKey="Template.StackedPyramidChart" />
+
+                <!-- Spacer Cell -->
+                <Cell Width="3" />
+
+                <!-- The Table (plus its data which is re-used by charts) -->
+                <StackPanel CellStyleKey="ThinBorderedCells">
+                    <Table TableDataKey="StackedBarChart.TableData" />
+                </StackPanel>
+
+                <!-- Spacer Cell -->
+                <Cell Width="3" />
+
+            </StackPanel>
+
+            <!-- Spacer Cell -->
+            <Cell Height="10" />
+
+        </StackPanel>
+
+        <!-- ***********************************-->
+        <!-- ** A RE-USABLE MAP TABLE + CHART **-->
+        <!-- ***********************************-->
+        <StackPanel Key="StackedBarChartMap" Orientation="Vertical">
+        
+            <!-- Cell that spans across the page as a heading -->
+            <Cell CellStyleKey="HeaderExport"
+                  SpanLastColumn="True"
+                  Value="A set of Bar Charts with Legends" />
+
+            <!-- A Padding Row-Cell -->
+            <Cell Height="10" SpanLastColumn="True"/>
+            
+            <!-- I would expect this StackPanel to stretch across the width -->
+            <!-- of the page and be bordered on all 4 sides - It isn't      -->
+            <StackPanel Orientation="Horizontal"
+                        CellStyleKey="BorderedCells"
+                        SpanLastColumn="True">
+                
+                <Cell Width="100" Height="40" Value="Some Heading :"/>
+                <Cell Value="A Cell (Width=50)" Width="50"/>
+                
+            </StackPanel>
+
+            <!-- Some table data -->
+            <TableData ItemsSource="{Binding FundData}"
+                       Key="StackedBarChart.TableData"
+                       TreatRowAsSeries="True">
+
+                <!-- Shows a shape which represents a legend -->
+                <TableColumn DisplayMember="SeriesColour"
+                             CellTemplateMapKey="LegendShape">
+
+                    <TableColumn.ChartOptions>
+                        <ChartExcludeOption Exclude="True" />
+                    </TableColumn.ChartOptions>
+
+                </TableColumn>
+
+                <!-- The column which is used as the Category Axis -->
+                <TableColumn DisplayMember="FundCode"
+                             Header="Fund Code"
+                             Width="100">
+
+                    <TableColumn.ChartOptions>
+                        <ChartCategory1AxisOption IsCategory1Axis="True" />
+                    </TableColumn.ChartOptions>
+
+                </TableColumn>
+
+                <!-- The Value -->
+                <TableColumn DisplayMember="Value"
+                             Header="Value"
+                             Width="100"/>
+            </TableData>
+
+            <!-- A cell that spans across the page (why not?) -->
+            <Cell Height="5" SpanLastColumn="True"/>
+            
+            <StackPanel Orientation="Horizontal">
+                
+                <Cell Width="1"/>
+
+                <StackPanel Orientation="Vertical">
+
+                    <StackPanel Orientation="Horizontal">
+
+                        <!-- 2 x Bar Charts (one Stacked Bar, One Stacked Pyramid -->
+                        <ContentControl ContentKey="StackedBarChartWithHeading"/>
+                        <Cell Width="5"/>
+                        <ContentControl ContentKey="StackedPyramidChartWithHeading" />
+
+                    </StackPanel>
+
+                    <Cell Height="20" SpanLastColumn="True" />
+
+                    <!-- A 2nd copy of the Stacked Bar Chart -->
+                    <StackPanel Orientation="Horizontal">
+                        
+                        <Cell Width="50" />
+                        <ContentControl ContentKey="StackedBarChartWithHeading" />
+            
+                    </StackPanel>
+                    
+                    <Cell Height="20" SpanLastColumn="True" />
+
+                </StackPanel>
+
+                <Cell Width="1"/>
+
+            </StackPanel>                
+
+            <!-- A cell that spans across the page (why not?) -->
+            <Cell Height="5" SpanLastColumn="True"/>
+
+        </StackPanel>
+
+    </TemplateCollection.Maps>
+
+    <!-- ============================================================= -->
+    <!--                         TEMPLATES                             -->
+    <!-- ============================================================= -->
+
+    <!-- ======================================= -->
+    <!--   InTemplateChartTemplate                -->
+    <!-- ======================================= -->
+    <Template DataTemplateSheet="_StackedBarChartTemplate"
+              TemplateId="StackedBarChartTemplate">
+        
+        <!--  Shows the use of a Reusable Map (defined above) -->
+        <ContentControl ContentKey="StackedBarChartMap" />
+
+    </Template>
+
+</TemplateCollection>

@@ -1,0 +1,167 @@
+﻿<TemplateCollection xmlns="clr-namespace:Gam.MM.Framework.Export.Map;assembly=MM.Framework.Export.Map"
+                    TemplateFileName="ReportTemplateWorkbook.xlsx">
+
+    <!-- ============================================================= -->
+    <!--   WE MAY SPECIFY MORE LOCALY SCOPED STYLE RESOURCES HERE,     -->
+    <!--   WHICH CAN POTENTIALLY SUPPLEMENT EXISTING STYLES            -->
+    <!--   IF WE WISH...                                               -->
+    <!-- ============================================================= -->
+    <TemplateCollection.StyleResources>
+
+        <CellStyle Key="SubHeaderExportAlignLeft"
+                   BasedOnKey="SubHeaderExport"
+                   FontSize="12"
+                   TextAlignment="Left" />
+        
+        <!-- GAM Green Border -->
+        <CellStyle Key="BorderedCells"
+                   BorderThickness="2"
+                   BorderColour="#006666" />
+    
+    </TemplateCollection.StyleResources>
+    
+    <!-- ============================================================= -->
+    <!--   WE MAY SPECIFY MORE LOCALY SCOPED RE-USABLE                 -->
+    <!--   MAP RESOURCES HERE.....                                     -->
+    <!-- ============================================================= -->
+    <TemplateCollection.Maps>
+
+        <ChartTemplate Key="InTemplate.BarChart"
+                       TemplateChartName="InTemplate.BarChart"
+                       TemplateSheetName="_InTemplateChartTemplate"/>
+        
+        <ChartTemplate Key="InTemplate.LineChart"
+                       TemplateChartName="InTemplate.LineChart"
+                       TemplateSheetName="_InTemplateChartTemplate"/>
+        
+        <Table Key="SeriesTableMap" CellStyleKey="BorderedCells"
+               Header="{Binding Path=Legend}"
+               ItemsSource="{Binding Path=Values}">
+
+            <TableColumn Header="Date"
+                         CellStyleKey="DateCellExport"
+                         DisplayMember="Date" />
+
+            <TableColumn Header="Value"
+                         CellStyleKey="NumberCellExport"
+                         DisplayMember="Value" />
+        </Table>
+
+        <!-- ***********************************-->
+        <!-- ** A RE-USABLE MAP TABLE + CHART **-->
+        <!-- ***********************************-->
+        <StackPanel Key="ExampleReusableMap" Orientation="Vertical">
+        
+            <!-- Cell that spans across the page as a heading -->
+            <Cell CellStyleKey="HeaderExport"
+                  SpanLastColumn="True"
+                  Value="This is the Worksheet Heading" />
+
+            <!-- Cell that spans across the page as a sub-heading -->
+            <Cell CellStyleKey="SubHeaderExport"
+                  SpanLastColumn="True"
+                  Value="Worksheet Sub-Heading....." />
+
+            <Cell SpanLastColumn="True" Height="10" />
+
+            <!-- Properties written above the table -->
+            <Cell CellStyleKey="BorderedCells"
+                  ColumnSpan="4"
+                  Height="20"
+                  Value="Spanning 4 columns" />
+            
+            <!-- A Padding Row-Cell -->
+            <Cell Height="10" SpanLastColumn="True"/>
+                    
+            <StackPanel Orientation="Horizontal">
+                
+                <StackPanel Orientation="Vertical">
+                    <Property Header="Number of Rows"
+                              Value="{Binding ExportRows.Count}" />
+                    <Property Header="Current Date"
+                              Value="{Binding CurrentDate}"
+                              CellStyleKey="DateCellExport" />
+                </StackPanel>
+                
+                <Cell CellStyleKey="BorderedCells"
+                      ColumnSpan="2"
+                      RowSpan="2"
+                      Value="SPAN 2 x COLS/ROWS" />
+                      
+            </StackPanel>
+                    
+            <Cell Height="25" SpanLastColumn="True"/>
+
+            <!-- The TableData (takes no UI space, just hosts the data) -->
+            <TableData ItemsSource="{Binding ExportRows}"
+                       Key="ExampleReusableTable.TableData">
+
+                <TableColumn CellStyleKey="DateCellExport"
+                             DisplayMember="SampleDate"
+                             Header="Date"
+                             Width="150"/>
+            </TableData>
+
+            <!-- A nice place to put the Chart (A Bar Chart) -->
+            <StackPanel Orientation="Horizontal">
+                
+                <!-- A Spacer Cell -->
+                <Cell/>
+
+                <!-- The Chart -->
+                <Chart ColumnSpan="6" Width="15"
+                       RowSpan="10"
+                       TableDataKey="ExampleReusableTable.TableData"
+                       ChartTemplateKey="InTemplate.BarChart"
+                       Title="{Binding Title}"/>
+                
+                <!-- A Spacer Cell -->
+                <Cell />
+                
+            </StackPanel>
+            
+            <!-- A cell that spans across the page (why not?) -->
+            <Cell Height="5" SpanLastColumn="True"/>
+                    
+            <StackPanel Orientation="Horizontal"
+                        SpanLastColumn="True">
+                
+                <!-- The Table -->
+                <Table TableDataKey="ExampleReusableTable.TableData" />
+                
+                <!-- A Padding Entity -->
+                <Padding CellStyleKey="ColumnHeaderExport"
+                         Value="PAD..."
+                         SpanLastColumn="True"/>
+                
+            </StackPanel>
+
+            <!-- A cell that spans across the page (why not?) -->
+            <Cell Height="5" SpanLastColumn="True"/>
+
+            <!-- A Second Chart (This time Line Chart) bound to same table data -->
+            <Chart RowSpan="10" Height="20"
+                   SpanLastColumn="True"
+                   ChartTemplateKey="InTemplate.LineChart"
+                   TableDataKey="ExampleReusableTable.TableData" />
+                    
+        </StackPanel>
+            
+    </TemplateCollection.Maps>
+
+    <!-- ============================================================= -->
+    <!--                         TEMPLATES                             -->
+    <!-- ============================================================= -->
+
+    <!-- ======================================= -->
+    <!--   InTemplateChartTemplate                -->
+    <!-- ======================================= -->
+    <Template DataTemplateSheet="_InTemplateChartTemplate"
+              TemplateId="InTemplateChartTemplate">
+        
+        <!--  Shows the use of a Reusable Map (defined above) -->
+        <ContentControl ContentKey="ExampleReusableMap" />
+
+    </Template>
+
+</TemplateCollection>

@@ -1,0 +1,1065 @@
+﻿<map:TemplateCollection xmlns:map="clr-namespace:Gam.MM.Framework.Export.Map;assembly=MM.Framework.Export.Map"
+                        TemplateFileName="SeriesTemplate.xlsx">
+
+    <map:TemplateCollection.StyleResources>
+
+        <map:CellStyle Key="Numeric2DPCellExportStyle"
+                       BasedOnKey="CellExport"
+                       TextAlignment="Right"
+                       ExcelFormat="#,##0.00;[Red]-#,##0.00"/>
+
+        <map:CellStyle Key="Percent2DPCellExportStyle"
+                       BasedOnKey="CellExport"
+                       TextAlignment="Right"
+                       ExcelFormat="#,##0.00%;[Red]-#,##0.00%"/>
+
+        <!-- TODO: Implement Bindings on CellStyle Properties-->
+        <map:CellStyle Key="IndentedRowHeadingExportStyle"
+                       BasedOnKey="CellExport"
+                       Indentation="2"
+                       FontWeight="Bold"/>                       
+                       <!--Indentation="{map:Binding RowMargin}"
+                       FontWeight="{map:Binding RowWeight}"/>-->
+
+        <!--<Style x:Key="IndentedRowHeadingStyle"
+                            BasedOn="{StaticResource CellExportStyle}"
+                            TargetType="{x:Type export:ExportStyle}">
+                        <Setter Property="Margin" Value="{map:Binding RowMargin}" />
+                        <Setter Property="FontWeight" Value="{map:Binding RowWeight}"/>
+                    </Style>-->
+
+        <!--<Style x:Key="Numeric2DPStyle"
+                            BasedOn="{StaticResource CellExportStyle}"
+                            TargetType="{x:Type export:ExportStyle}">
+                        <Setter Property="TextAlignment" Value="Right" />
+                        <Setter Property="ExcelFormat" Value="#,##0.00;[Red]-#,##0.00"/>
+                    </Style>
+
+                    <export:ExportStyle x:Key="Numeric2DPCellExportStyle"
+                                        Style="{StaticResource Numeric2DPStyle}" />-->
+
+        <!--<Style x:Key="Percent2DPStyle"
+                            BasedOn="{StaticResource CellExportStyle}"
+                            TargetType="{x:Type export:ExportStyle}">
+                        <Setter Property="TextAlignment" Value="Right" />
+                        <Setter Property="ExcelFormat" Value="#,##0.00%;[Red]-#,##0.00%"/>
+                    </Style>
+
+                    <export:ExportStyle x:Key="Percent2DPCellExportStyle"
+                                        Style="{StaticResource Percent2DPStyle}" />-->
+
+    </map:TemplateCollection.StyleResources>
+    
+    <!-- Collection of re-usable maps-->
+    <map:TemplateCollection.Maps>
+        
+        <map:Table Key="MonthlyReturnsTable"
+                   ItemsSource="{map:Binding MonthlyReturnsByYear.MonthlyReturns}">
+            
+            <map:TableColumn DisplayMember="SeriesHeader.Name"
+                             Header="{map:Binding MonthlyReturnsByYear.Year}"
+                             Width="150"/>
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="January"
+                             Header="Jan"
+                             Width="40"/>
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="February"
+                             Header="Feb"
+                             Width="40"/>
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="March"
+                             Header="Mar"
+                             Width="40"/>
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="April"
+                             Header="Apr"
+                             Width="40"/>
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="May"
+                             Header="May"
+                             Width="40"/>
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="June"
+                             Header="June"
+                             Width="40"/>
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="July"
+                             Header="July"
+                             Width="40"/>
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="August"
+                             Header="Aug"
+                             Width="40"/>
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="September"
+                             Header="Sept"
+                             Width="40"/>
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="October"
+                             Header="Oct"
+                             Width="40"/>
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="November"
+                             Header="Nov"
+                             Width="40"/>
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="December"
+                             Header="Dec"
+                             Width="40"/>
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="YearsReturns"
+                             Header="Year"
+                             Width="40"/>
+        </map:Table>
+
+    </map:TemplateCollection.Maps>
+
+    <map:Template DataTemplateSheet="_AnalyticsWorkspaceData"
+                  Title="Workspace Data"
+                  TemplateId="Analytics.AnalyticsWorkspaceDataTemplate">
+        <map:Table ItemsSource="{map:Binding SeriesHeaders}">
+            <map:Table.Properties>
+                <map:Property Header="Date range"
+                              Value="{map:Binding DateRangeDescription}"
+                              CellWidth="200"/>
+            </map:Table.Properties>
+
+            <map:TableColumn DisplayMember="ShortName"
+                             Header="Short Name"
+                             Width="100"/>
+            <map:TableColumn DisplayMember="Name"
+                             Header="Name"
+                             Width="300"/>
+            <map:TableColumn DisplayMember="Currency"
+                             Header="Currency"
+                             Width="100"/>
+            <map:TableColumn DisplayMember="IsBenchmark"
+                             Header="Benchmark"
+                             Width="100"/>
+            <map:TableColumn DisplayMember="FullCode"
+                             Header="Full Code"
+                             Width="100"/>
+            <map:TableColumn DisplayMember="SeriesType"
+                             Header="Series Type"
+                             Width="100"/>
+            <map:TableColumn DisplayMember="SeriesRange"
+                             Header="Series Range"
+                             Width="100"/>
+        </map:Table>
+    </map:Template>
+
+    <!-- key stats for report, not used, just an idea -->
+    <map:Template DataTemplateSheet="_KeyStatisticsData" TemplateId="Analytics.KeyStatisticsDataTemplate">
+        <map:Table ItemsSource="{map:Binding ExportRows}">
+            <map:Table.Properties>
+                <map:Property Header="Sample Frequency"
+                              Value="{map:Binding SampleFrequencyDescription}"
+                              CellWidth="200"/>
+            </map:Table.Properties>
+        </map:Table>
+    </map:Template>
+
+    <!-- return stats -->
+    <map:Template DataTemplateSheet="_ReturnStatsData"
+                  TemplateId="Analytics.ReturnStatsDataTemplate"
+                  Title="Return stats">
+        <map:Table ItemsSource="{map:Binding SeriesCollection}">
+            <map:Table.Properties>
+                <map:Property Header="Sample Frequency"
+                              Value="{map:Binding SampleFrequencyDescription}"
+                              CellWidth="200"/>
+            </map:Table.Properties>
+
+            <map:TableColumn DisplayMember="Description"
+                             Header="Name"
+                             Width="280"/>
+            <!-- AnnualisedReturn -->
+            <map:TableColumn CellStyleKey="Percent2DPCellExportStyle"  
+                             DisplayMember="AnnualisedReturn"
+                             Header="Compound ROR"
+                             Width="80"/>
+            <!-- CumulativeReturn -->
+            <map:TableColumn CellStyleKey="Percent2DPCellExportStyle"  
+                             DisplayMember="CumulativeReturn"
+                             Header="Cumulative Return"
+                             Width="80"/>
+            <!-- YTDReturn -->
+            <map:TableColumn CellStyleKey="Percent2DPCellExportStyle"  
+                             DisplayMember="YTDReturn"
+                             Header="YTD"
+                             Width="80"/>
+            <!--Rolling12MonthReturn-->
+            <map:TableColumn CellStyleKey="Percent2DPCellExportStyle"  
+                             DisplayMember="Rolling12MonthReturn"
+                             Header="Rolling 12 Month"
+                             Width="80"/>
+        </map:Table>
+    </map:Template>
+
+    <!-- risk stats -->
+    <map:Template DataTemplateSheet="_RiskStatsData"
+                  TemplateId="Analytics.RiskStatsDataTemplate"
+                  Title="Risk stats">
+        <map:Table ItemsSource="{map:Binding SeriesCollection}">
+            <map:Table.Properties>
+                <map:Property Header="Sample Frequency"
+                              Value="{map:Binding SampleFrequencyDescription}"
+                              CellWidth="200"/>
+            </map:Table.Properties>
+            <map:TableColumn DisplayMember="Description"
+                             Header="Name"
+                             Width="280"/>
+            <map:TableColumn CellStyleKey="Percent2DPCellExportStyle"  
+                             DisplayMember="StandardDeviation"
+                             Header="Standard Deviation"
+                             Width="75"/>
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="SharpeRatio"
+                             Header="Sharpe Ratio (5.0%)"
+                             Width="80"/>
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="SharpeRatioRiskAdjusted"
+                             Header="Sharpe Ratio Risk Free"
+                             Width="80"/>
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="SortinoRatio"
+                             Header="Sortino (5.0%)"
+                              Width="70"/>
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="Skewness"
+                             Header="Skewness"
+                             Width="80"/>
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="Kurtosis"
+                             Header="Kurtosis"
+                              Width="70"/>
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="CalmarRatio"
+                             Header="Calmar Ratio"
+                             Width="70"/>
+            <map:TableColumn CellStyleKey="Percent2DPCellExportStyle"  
+                             DisplayMember="DownsideDeviation"
+                             Header="Downside Deviation (5.0%)"
+                             Width="80"/>
+            <map:TableColumn CellStyleKey="Percent2DPCellExportStyle"  
+                             DisplayMember="MaxDrawdown"
+                             Header="Max Drawdown"
+                             Width="80"/>
+        </map:Table>
+    </map:Template>
+
+    <!-- benchmark comparison stats -->
+    <map:Template DataTemplateSheet="_BenchmarkStatsData"
+                  TemplateId="Analytics.BenchmarkStatsDataTemplate"
+                  Title="Comparison to benchmark stats">
+        <map:Table ItemsSource="{map:Binding SeriesNoBenchmarkCollection}">
+            <map:Table.Properties>
+                <map:Property Header="Sample Frequency"
+                              Value="{map:Binding SampleFrequencyDescription}"
+                              CellWidth="200"/>
+            </map:Table.Properties>
+            <map:TableColumn DisplayMember="Description"
+                             Header="Name"
+                             Width="280" />
+            <map:TableColumn CellStyleKey="Percent2DPCellExportStyle"  
+                             DisplayMember="Alpha"
+                             Header="Alpha"
+                             Width="80"/>
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="Beta"
+                             Header="Beta"
+                             Width="80"/>
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="Correlation"
+                             Header="Correlation"                                             
+                             Width="80"/>
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="RSquared"
+                             Header="RSquared"
+                             Width="80"/>
+            <map:TableColumn CellStyleKey="Percent2DPCellExportStyle"  
+                             DisplayMember="StandardError"
+                             Header="Standard Error"
+                             Width="80"/>
+        </map:Table>
+    </map:Template>
+
+    <!-- performance series -->
+    <map:Template DataTemplateSheet="_PerformanceSeriesDataTemplate" 
+                  PresentationTemplateSheet="PerformanceSeriesChartTemplate"
+                  TemplateId="Analytics.PerformanceSeriesTemplate"
+                  Title="{map:Binding Title}">
+        
+        <map:Table Header="{map:Binding Header}"
+                   ItemsSource="{map:Binding ExportRows}"
+                   SubHeader="{map:Binding SubHeader}">
+            
+            <map:Table.Properties>
+                <map:Property Header="Sample Frequency"
+                              Value="{map:Binding SampleFrequencyDescription}"
+                              CellWidth="200"/>
+            </map:Table.Properties>
+            
+            <!-- Used as X Axis for charts -->
+            <map:TableColumn CellStyleKey="DateCellExport"
+                             DisplayMember="SampleDate"
+                             Header="Sample Date"
+                             Width="100"
+                             IsCategory1Axis="True"/>
+
+            <!-- This column does not generate a series (BaseOnChartSeriesIndex="-1") -->
+            <map:TableColumn CellStyleKey="DateCellExport"
+                             DisplayMember="ReturnDate"
+                             Header="Return Date"
+                             Width="100"
+                             BaseOnChartSeriesIndex="-1"/>
+        </map:Table>
+    </map:Template>
+
+    <!-- performance vs correlation -->
+    <map:Template DataTemplateSheet="_PerfCorrelationDataTemplate"
+                  PresentationTemplateSheet="_PerfCorrelationChartTemplate"
+                  TemplateId="Analytics.PerformanceCorrelationTemplate"
+                  Title="{map:Binding Title}">
+        <map:Table Header="{map:Binding Header}"
+                   ItemsSource="{map:Binding ExportRows}"
+                   SubHeader="{map:Binding SubHeader}">
+            <map:Table.Properties>
+                <map:Property Header="Sample Frequency"
+                              Value="{map:Binding SampleFrequencyDescription}"
+                              CellWidth="200"/>
+            </map:Table.Properties>
+            <map:TableColumn CellStyleKey="DateCellExport"
+                             DisplayMember="SampleDate"
+                             Header="Sample Date"
+                             Width="100"/>
+        </map:Table>
+    </map:Template>
+
+    <!-- period return -->
+    <map:Template DataTemplateSheet="_PeriodReturnDataTemplate"
+                  PresentationTemplateSheet="PeriodReturnChartTemplate"
+                  TemplateId="Analytics.PeriodReturnTemplate"
+                  Title="{map:Binding Title}">
+        <map:Table Header="{map:Binding Header}"
+                   ItemsSource="{map:Binding ExportRows}"
+                   SubHeader="{map:Binding SubHeader}">
+            <map:Table.Properties>
+                <map:Property Header="Sample Frequency"
+                              Value="{map:Binding SampleFrequencyDescription}"
+                              CellWidth="200"/>
+            </map:Table.Properties>
+            <map:TableColumn DisplayMember="Description"
+                             Width="75"/>
+        </map:Table>
+    </map:Template>
+
+    <!-- return distribution -->
+    <map:Template DataTemplateSheet="_ReturnDistributionDataTemplate"
+                  PresentationTemplateSheet="ReturnDistributionChartTemplate"
+                  TemplateId="Analytics.ReturnDistributionTemplate"
+                  Title="{map:Binding Title}">
+        <map:Table Header="{map:Binding Header}"
+                   ItemsSource="{map:Binding ExportRows}"
+                   SubHeader="{map:Binding SubHeader}">
+            <map:Table.Properties>
+                <map:Property Header="Sample Frequency"
+                              Value="{map:Binding SampleFrequencyDescription}"
+                              CellWidth="200"/>
+            </map:Table.Properties>
+            <map:TableColumn DisplayMember="Column"
+                             Header="Return"
+                             Width="100"/>
+        </map:Table>
+    </map:Template>
+
+    <!-- return scatter -->
+    <map:Template DataTemplateSheet="_ReturnScatterDataTemplate"
+                  PresentationTemplateSheet="ReturnScatterChartTemplate"
+                  TemplateId="Analytics.ReturnScatterTemplate"
+                  Title="{map:Binding Title}">
+        <map:Table Header="{map:Binding Header}"
+                   ItemsSource="{map:Binding ExportRows}"                              
+                   SubHeader="{map:Binding SubHeader}">
+            <map:Table.Properties>
+                <map:Property Header="Sample Frequency"
+                              Value="{map:Binding SampleFrequencyDescription}"
+                              CellWidth="200"/>
+            </map:Table.Properties>
+        </map:Table>
+    </map:Template>
+
+    <!-- quartile performance -->
+    <map:Template DataTemplateSheet="_QuartilePerfDataTemplate"
+                  TemplateId="Analytics.QuartilePerformanceTemplate"
+                  Title="{map:Binding Title}">
+        <map:Table Header="{map:Binding Header}"
+                   ItemsSource="{map:Binding ExportRows}"                              
+                   SubHeader="{map:Binding SubHeader}">
+            <map:Table.Properties>
+                <map:Property Header="Sample Frequency"
+                              Value="{map:Binding SampleFrequencyDescription}"
+                              CellWidth="200"/>
+            </map:Table.Properties>
+            <map:TableColumn DisplayMember="ValuesDictionary[Year]"
+                             Header="Year"
+                             Width="100"/>
+            <map:TableColumn DisplayMember="ValuesDictionary[Quarter]"
+                             Header="Quarter"
+                             Width="100"/>
+            <map:TableColumn CellStyleKey="Number2DPCellExport" 
+                             DisplayMember="ValuesDictionary[Min]"
+                             Header="Min"
+                                     Width="100"/>
+            <map:TableColumn CellStyleKey="Number2DPCellExport" 
+                             DisplayMember="ValuesDictionary[Max]"
+                             Header="Max"
+                             Width="100"/>
+            <map:TableColumn CellStyleKey="Number2DPCellExport" 
+                             DisplayMember="ValuesDictionary[Mean]"
+                             Header="Mean"
+                             Width="100"/>
+            <map:TableColumn CellStyleKey="Number2DPCellExport" 
+                             DisplayMember="ValuesDictionary[Median]"
+                             Header="Median"
+                             Width="100"/>
+            <map:TableColumn CellStyleKey="Number2DPCellExport" 
+                             DisplayMember="ValuesDictionary[Q1Threshold]"
+                             Header="Q1Threshold"
+                             Width="100"/>
+            <map:TableColumn CellStyleKey="Number2DPCellExport" 
+                             DisplayMember="ValuesDictionary[Q4Threshold]"
+                             Header="Q4Threshold"
+                             Width="100"/>
+        </map:Table>
+    </map:Template>
+
+    <!-- excess returns -->
+    <map:Template DataTemplateSheet="_ExcessReturnsDataTemplate"
+                  PresentationTemplateSheet="ExcessReturnsChartTemplate"
+                  TemplateId="Analytics.ExcessReturnsTemplate"
+                  Title="{map:Binding Title}">
+        <map:Table Header="{map:Binding Header}"
+                   ItemsSource="{map:Binding ExportRows}"                              
+                   SubHeader="{map:Binding SubHeader}">
+            <map:Table.Properties>
+                <map:Property Header="Sample Frequency"
+                              Value="{map:Binding SampleFrequencyDescription}"
+                              CellWidth="200"/>
+            </map:Table.Properties>
+            
+            <map:TableColumn CellStyleKey="DateCellExport" 
+                             DisplayMember="SampleDate"
+                             Header="Sample Data"
+                             Width="100"/>
+
+            <map:TableColumn BaseOnChartSeriesIndex="-1"
+                             CellStyleKey="Number2DPCellExport" 
+                             DisplayMember="ValuesDictionary[ExcessReturn]"
+                             Header="Excess Return"
+                             Width="100"/>
+
+            <map:TableColumn BaseOnChartSeriesIndex="-1"
+                             CellStyleKey="Number2DPCellExport" 
+                             DisplayMember="ValuesDictionary[ExcessCumulativeReturn]"
+                             Header="Excess Cumulative Return"
+                             Width="100"/>
+        </map:Table>
+    </map:Template>
+
+    <!-- Relative Strength -->
+    <map:Template DataTemplateSheet="_RelativeStrengthDataTemplate"
+                  PresentationTemplateSheet="RelativeStrengthChartTemplate"
+                  TemplateId="Analytics.RelativeStrengthTemplate"
+                  Title="{map:Binding Title}">
+        <map:Table Header="{map:Binding Header}"
+                   ItemsSource="{map:Binding ExportRows}"                              
+                   SubHeader="{map:Binding SubHeader}">
+            <map:Table.Properties>
+                <map:Property Header="Sample Frequency"
+                              Value="{map:Binding SampleFrequencyDescription}"
+                              CellWidth="200"/>
+            </map:Table.Properties>
+            <map:TableColumn CellStyleKey="DateCellExport" 
+                             DisplayMember="SampleDate"
+                             Header="Sample Data"
+                             Width="100"/>
+            <map:TableColumn CellStyleKey="Number2DPCellExport" 
+                             DisplayMember="ValuesDictionary[RelativeStrength]"
+                             Header="Relative Strength"
+                             Width="100"/>
+        </map:Table>
+    </map:Template>
+
+    <!-- single stat -->
+    <map:Template DataTemplateSheet="_SingleStatDataTemplate"
+                  PresentationTemplateSheet="SingleStatChartTemplate"
+                  TemplateId="Analytics.SingleStatisticTemplate"
+                  Title="{map:Binding Title}" >
+        
+        <map:Table Header="{map:Binding Header}"
+                   ItemsSource="{map:Binding ExportRows}"                              
+                   SubHeader="{map:Binding SubHeader}">
+            
+            <map:Table.Properties>
+                <map:Property Header="Sample Frequency"
+                              Value="{map:Binding SampleFrequencyDescription}"
+                              CellWidth="200"/>
+            </map:Table.Properties>
+            
+            <map:TableColumn DisplayMember="Description"                                     
+                             Width="100"/>
+        </map:Table>
+    </map:Template>
+
+    <!-- risk return -->
+    <map:Template DataTemplateSheet="_RiskReturnDataTemplate"
+                  PresentationTemplateSheet="RiskReturnChartTemplate" 
+                  TemplateId="Analytics.RiskReturnTemplate"
+                  Title="{map:Binding Title}">
+        <map:Table Header="{map:Binding Header}"
+                   ItemsSource="{map:Binding ExportRows}"                              
+                   SubHeader="{map:Binding SubHeader}">
+            <map:Table.Properties>
+                <map:Property Header="Sample Frequency"
+                              Value="{map:Binding SampleFrequencyDescription}"
+                              CellWidth="200"/>
+            </map:Table.Properties>
+            <map:TableColumn DisplayMember="Description"
+                             Header="Name"
+                             Width="100"/>
+            <map:TableColumn CellStyleKey="Number2DPCellExport"
+                             DisplayMember="ValuesDictionary[X]"
+                             Header="X"
+                             Width="100"/>
+            <map:TableColumn CellStyleKey="Number2DPCellExport"
+                             DisplayMember="ValuesDictionary[Y]"
+                             Header="Y"
+                             Width="100"/>
+        </map:Table>
+    </map:Template>
+
+    <!-- history, interest rate and valuation -->
+    <map:Template DataTemplateSheet="_HistoryDataTemplate" 
+                  PresentationTemplateSheet="HistoryChartTemplate"
+                  TemplateId="Analytics.HistoryTemplate"
+                  Title="{map:Binding Title}">
+        <map:Table Header="{map:Binding Header}"
+                   ItemsSource="{map:Binding ExportRows}"
+                   SubHeader="{map:Binding SubHeader}">
+            <map:Table.Properties>
+                <map:Property Header="Sample Frequency"
+                              Value="{map:Binding SampleFrequencyDescription}"
+                              CellWidth="200"/>
+            </map:Table.Properties>
+            <map:TableColumn CellStyleKey="DateCellExport"
+                             DisplayMember="SampleDate"
+                             Header="Date"
+                             Width="100"/>
+        </map:Table>
+    </map:Template>
+
+    <!-- start of statistics gcse -->
+
+    <!-- return -->
+    <map:Template DataTemplateSheet="_ReturnStatsData"
+                  TemplateId="Analytics.ReturnStatisticsDataTemplate"
+                  Title="Return stats">
+        <map:Table ItemsSource="{map:Binding StatisticResultsCollection}">
+            <map:Table.Properties>
+                <map:Property Header="Sample Frequency"
+                              Value="{map:Binding SampleFrequencyDescription}"
+                              CellWidth="200"/>
+            </map:Table.Properties>
+            <map:TableColumn DisplayMember="Name"
+                             Header="Name"
+                             Width="280"/>
+            <!-- AnnualisedReturn -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="AnnualisedReturnResult.Value"
+                             Header="Compound ROR"
+                             Width="80"/>
+            <!-- AverageReturn -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="AverageReturnResult.Value"
+                             Header="Average Return"
+                             Width="80"/>
+            <!-- CumulativeReturn -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="CumulativeReturnResult.Value"
+                             Header="Cumulative Return"
+                             Width="80"/>
+            <!-- YTDReturn -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="YTDReturnResult.Value"
+                             Header="YTD"
+                             Width="80"/>
+            <!--Rolling12MonthReturn-->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                                     DisplayMember="Rolling12MonthReturnResult.Value"
+                                     Header="Rolling 12 Month"
+                                     Width="80"/>
+            <!--GeometricMeanReturn-->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="GeometricMeanReturnResult.Value"
+                             Header="Geometric Return"
+                             Width="80"/>
+            <!--GainingPeriodsResult-->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="GainingPeriodsResult.Value"
+                             Header="Gaining Periods"
+                             Width="80"/>
+            <!--LargestSingleGainResult-->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="LargestSingleGainResult.Value"
+                             Header="Largest Single Gain"
+                             Width="80"/>
+            <!--LargestSingleLossResult-->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="LargestSingleLossResult.Value"
+                             Header="Largest Single Loss"
+                             Width="80"/>
+
+        </map:Table>
+    </map:Template>
+
+    <!-- distribution -->
+    <map:Template DataTemplateSheet="_DistributionStatsData"
+                  TemplateId="Analytics.DistributionStatisticsDataTemplate"
+                  Title="Distribution stats">
+        <map:Table ItemsSource="{map:Binding StatisticResultsCollection}">
+            <map:Table.Properties>
+                <map:Property Header="Sample Frequency"
+                              Value="{map:Binding SampleFrequencyDescription}"
+                              CellWidth="200"/>
+            </map:Table.Properties>
+            <map:TableColumn DisplayMember="Name"
+                             Header="Name"
+                             Width="280"/>
+            <!-- S.D. -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="StandardDeviationResult.Value"
+                             Header="S.D."
+                             Width="75"/>
+            <!-- Annualised S.D. -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="AnnualisedStandardDeviationResult.Value"
+                             Header="Annualised S.D."
+                             Width="75"/>
+            <!-- Skewness -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="SkewnessResult.Value"
+                             Header="Skewness"
+                             Width="80"/>
+            <!-- Kurtosis -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="KurtosisResult.Value"
+                             Header="Kurtosis"
+                             Width="70"/>
+        </map:Table>
+    </map:Template>
+
+    <!-- risk -->
+    <map:Template DataTemplateSheet="_RiskStatsData"
+                  TemplateId="Analytics.RiskStatisticsDataTemplate"
+                  Title="Risk stats">
+        
+        <map:Table ItemsSource="{map:Binding StatisticResultsCollection}">
+            
+            <map:Table.Properties>
+                <map:Property Header="Sample Frequency"
+                              Value="{map:Binding SampleFrequencyDescription}"
+                              CellWidth="200"/>
+            </map:Table.Properties>
+            
+            <!-- Name -->
+            <map:TableColumn DisplayMember="Name"
+                             Header="Name"
+                             Width="280"/>
+            <!-- SharpeRatioResult -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                                     DisplayMember="SharpeRatioResult.Value"
+                                     Header="Sharpe Ratio (5.0%)"
+                                     Width="80"/>
+            <!-- SharpeRatioResult -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="SharpeRatioRiskAdjustedResult.Value"
+                             Header="Sharpe Ratio Risk Free"
+                             Width="80"/>
+            <!-- SortinoRatioResult-->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="SortinoRatioResult.Value"
+                             Header="Sortino (5.0%)"
+                             Width="70"/>
+            <!-- CalmarRatioResult -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="CalmarRatioResult.Value"
+                             Header="Calmar Ratio"
+                             Width="70"/>
+            <!-- Downside dev -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="DownsideDeviationResult.Value"
+                             Header="Downside Deviation (5.0%)"
+                             Width="80"/>
+            <!-- Downside prob -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                                     DisplayMember="DownsideProbabilityResult.Value"
+                                     Header="Downside Probability (5.0%)"
+                                     Width="80"/>
+            <!-- Max Drawdown -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="MaxDrawdownResult.Value"
+                             Header="Max Drawdown"
+                             Width="80"/>
+            <!-- Return at risk 90% -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="ReturnAtRisk90Result.Value"
+                             Header="Max Drawdown"
+                             Width="80"/>
+            <!-- Return at risk 95% -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="ReturnAtRisk95Result.Value"
+                             Header="Max Drawdown"
+                             Width="80"/>
+            <!-- Return at risk 99% -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="ReturnAtRisk99Result.Value"
+                             Header="Max Drawdown"
+                             Width="80"/>
+            <!-- Return at risk 99.5% -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="ReturnAtRisk995Result.Value"
+                             Header="Max Drawdown"
+                              Width="80"/>
+        </map:Table>
+    </map:Template>
+
+    <!-- relative -->
+    <map:Template DataTemplateSheet="_RelativeStatsData"
+                  TemplateId="Analytics.RelativeStatisticsDataTemplate"
+                  Title="Relative stats">
+        <map:Table ItemsSource="{map:Binding ComparativeStatisticResultsCollection}">
+            <map:Table.Properties>
+                <map:Property Header="Sample Frequency"
+                              Value="{map:Binding SampleFrequencyDescription}"
+                              CellWidth="200"/>
+            </map:Table.Properties>
+            <!-- Name -->
+            <map:TableColumn DisplayMember="Name"
+                             Header="Name"
+                            Width="280"/>
+            <!-- SuccessRatioResult -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="SuccessRatioResult.Value"
+                             Header="Success Ratio"
+                             Width="80"/>
+            <!-- SuccessRatioUpResult -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="SuccessRatioUpResult.Value"
+                             Header="Success Ratio Up"
+                             Width="80"/>
+            <!-- SuccessRatioDownResult -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="SuccessRatioDownResult.Value"
+                             Header="Success Ratio Down"
+                             Width="80"/>
+            <!-- CaptureUpRatioResult -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="CaptureUpRatioResult.Value"
+                             Header="Capture Ratio Up"
+                             Width="80"/>
+            <!-- CaptureDownRatioResult -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="CaptureDownRatioResult.Value"
+                             Header="Capture Ratio Down"
+                             Width="80"/>
+            <!-- TreynorRatioResult -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="TreynorRatioResult.Value"
+                             Header="Treynor Ratio"
+                             Width="80"/>
+            <!-- RelativeVolatilityResult -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="RelativeVolatilityResult.Value"
+                             Header="Relative Volatility"
+                             Width="80"/>
+            <!-- TrackingErrorResult -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="TrackingErrorResult.Value"
+                             Header="Tracking Error"
+                             Width="80"/>
+            <!-- InformationRatioResult -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="InformationRatioResult.Value"
+                             Header="Information Ratio"
+                             Width="80"/>
+            <!-- SystematicRiskResult -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="SystematicRiskResult.Value"
+                             Header="Systematic Risk"
+                             Width="80"/>
+            <!-- UnsystematicRiskResult -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="UnsystematicRiskResult.Value"
+                             Header="Unsystematic Risk"
+                             Width="80"/>
+        </map:Table>
+    </map:Template>
+
+    <!-- regression -->
+    <map:Template DataTemplateSheet="_RegressionStatsData"
+                  TemplateId="Analytics.RegressionStatisticsDataTemplate"
+                  Title="Regression stats">
+        <map:Table ItemsSource="{map:Binding ComparativeStatisticResultsCollection}">
+            <map:Table.Properties>
+                <map:Property Header="Sample Frequency"
+                              Value="{map:Binding SampleFrequencyDescription}"
+                              CellWidth="200"/>
+            </map:Table.Properties>
+            <!-- Name -->
+            <map:TableColumn DisplayMember="Name"
+                             Header="Name"
+                             Width="280" />
+            <!-- Alpha -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="AlphaResult.Value"
+                             Header="Alpha"
+                             Width="80"/>
+            <!-- AlphaStandardErrorResult -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="AlphaStandardErrorResult.Value"
+                             Header="Alpha S.E."
+                             Width="80"/>
+            <!-- AlphaTStatResult -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="AlphaTStatResult.Value"
+                             Header="Alpha T-Stat"
+                             Width="80"/>
+            <!-- Beta -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="BetaResult.Value"
+                             Header="Beta"
+                             Width="80"/>
+            <!-- BetaStandardErrorResult -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="BetaStandardErrorResult.Value"
+                             Header="Beta S.E."
+                             Width="80"/>
+            <!-- BetaTStatResult -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="BetaTStatResult.Value"
+                             Header="Beta T-Stat"
+                             Width="80"/>
+            <!-- Correlation -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="CorrelationResult.Value"
+                             Header="Correlation"
+                             Width="80"/>
+            <!-- CorrelationUpResult -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="CorrelationUpResult.Value"
+                             Header="Correlation Up"
+                             Width="80"/>
+            <!-- CorrelationDownResult -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="CorrelationDownResult.Value"
+                             Header="Correlation Down"
+                             Width="80"/>
+            <!-- R-Squared -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="RSquaredResult.Value"
+                             Header="RSquared"
+                             Width="80"/>
+            <!-- JensensAlphaAnnualisedResult -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="JensensAlphaAnnualisedResult.Value"
+                             Header="Annualised Jensen's Alpha"
+                             Width="80"/>
+            <!-- JensensAlphaResult -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="JensensAlphaResult.Value"
+                             Header="Jensen's Alpha"
+                             Width="80"/>
+            <!-- Standard Error -->
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="StandardErrorResult.Value"
+                             Header="Standard Error"
+                             Width="80"/>
+        </map:Table>
+    </map:Template>
+
+    <!-- end of statistics gcse -->
+
+    <!-- monthly stats table -->
+    <map:Template DataTemplateSheet="_MonthlyReturnsTableTemplate"
+                  TemplateId="Analytics.CompositeMonthlyReturnsTemplate"
+                  Title="{map:Binding Title}">
+        
+        <map:StackPanel Orientation="Vertical">
+            
+            <map:Property Header="Sample Frequency"
+                          Value="{map:Binding SampleFrequencyDescription}"
+                          CellWidth="200"/>
+
+            <!-- This uses a re-usable map (MonthlyReturnsTable) -->
+            <!-- When ItemTempalateMap is implemented, we may wish to use this instead -->
+            <map:StackPanel ItemsSource="{map:Binding MonthlyReturnsTableDataPartList}"  
+                            Orientation="Vertical"
+                            ItemTemplateMapKey="MonthlyReturnsTable">
+                
+                <!--<map:StackPanel.ItemTemplateMap>
+                    
+                    <map:Table ItemsSource="{map:Binding MonthlyReturnsByYear.MonthlyReturns}">
+                        <map:TableColumn DisplayMember="SeriesHeader.Name"
+                                         Header="{map:Binding MonthlyReturnsByYear.Year}"
+                                         Width="150"/>
+                        <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                                         DisplayMember="January"
+                                         Header="Jan"
+                                         Width="40"/>
+                        <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                                         DisplayMember="February"
+                                         Header="Feb"
+                                         Width="40"/>
+                        <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                                         DisplayMember="March"
+                                         Header="Mar"
+                                         Width="40"/>
+                        <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                                         DisplayMember="April"
+                                         Header="Apr"
+                                         Width="40"/>
+                        <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                                         DisplayMember="May"
+                                         Header="May"
+                                         Width="40"/>
+                        <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                                         DisplayMember="June"
+                                         Header="June"
+                                         Width="40"/>
+                        <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                                         DisplayMember="July"
+                                         Header="July"
+                                         Width="40"/>
+                        <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                                         DisplayMember="August"
+                                         Header="Aug"
+                                         Width="40"/>
+                        <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                                         DisplayMember="September"
+                                         Header="Sept"
+                                         Width="40"/>
+                        <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                                         DisplayMember="October"
+                                         Header="Oct"
+                                         Width="40"/>
+                        <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                                         DisplayMember="November"
+                                         Header="Nov"
+                                         Width="40"/>
+                        <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                                         DisplayMember="December"
+                                         Header="Dec"
+                                         Width="40"/>
+                        <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                                         DisplayMember="YearsReturns"
+                                         Header="Year"
+                                         Width="40"/>
+                    </map:Table>
+                </map:StackPanel.ItemTemplateMap>-->
+            </map:StackPanel>
+        </map:StackPanel>
+    </map:Template>
+    <!-- end of monthly stats table -->
+
+    <!-- stats rows -->
+    <map:Template DataTemplateSheet="_StatsRowsTemplate"
+                  TemplateId="Analytics.CompositeStatsRowsTemplate"
+                  Title="{map:Binding Title}">
+        
+        <map:StackPanel Orientation="Vertical">
+            
+            <map:Property Header="Sample Frequency"
+                          Value="{map:Binding SampleFrequencyDescription}"
+                          CellWidth="200"/>
+            
+            <map:StackPanel Orientation="Horizontal">
+
+                <map:Table ItemsSource="{map:Binding Path=StatsResultRows}"
+                           TemplateId="Analytics.StatsRowsTemplate">
+                    <map:TableColumn CellStyleKey="IndentedRowHeadingExportStyle"
+                                     DisplayMember="Description"
+                                     Header="Name"
+                                     Width="100"/>
+                </map:Table>
+
+                <map:Table ItemsSource="{map:Binding Path=StatsResultRows}"
+                           TemplateId="Analytics.CompStatsRowsTemplate">
+                    <map:TableColumn CellStyleKey="IndentedRowHeadingExportStyle"
+                                     DisplayMember="Description"
+                                     Header="Name"
+                                     Width="100" />
+                </map:Table>
+
+            <!-- not working, need to return to this at some point
+            <map:StackPanel.ItemTemplateMap>
+              <map:Table ItemsSource="{map:Binding StatsResultRows}">
+                <map:TableColumn DisplayMember="Description"
+                                         Header="Name"
+                                         Width="100"/>
+              </map:Table>
+            </map:StackPanel.ItemTemplateMap>
+            -->
+
+            </map:StackPanel>
+            
+        </map:StackPanel>
+        
+    </map:Template>
+    <!-- end of stats rows -->
+
+    <!-- holdings table-->
+    <map:Template DataTemplateSheet="_HoldingsData"
+                  TemplateId="Analytics.HoldingsTableTemplate"
+                  Title="{map:Binding Title}">
+        
+        <map:Table ItemsSource="{map:Binding Holdings}"
+                   Header="{map:Binding Header}" >
+            
+            <map:Table.Properties>
+                <map:Property Header="Sample Frequency"
+                              Value="{map:Binding SampleFrequencyDescription}"
+                              CellWidth="200"/>
+            </map:Table.Properties>
+            
+            <map:TableColumn DisplayMember="LongName"
+                             Header="Name"
+                             Width="350"/>
+            <map:TableColumn DisplayMember="GamFundCode"
+                             Header="Fund Code"
+                             Width="90"/>
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"  
+                             DisplayMember="NetPct"
+                             Header="%"
+                             Width="60"/>
+            <map:TableColumn CellStyleKey="Numeric2DPCellExportStyle"
+                             DisplayMember="SumNmnl"
+                             Header="Sum Nmnl"
+                             Width="90"/>
+        </map:Table>
+    </map:Template>
+    <!-- end of holdings table-->
+
+
+    <!-- not working - need to return to this at some point (CH - I Assume this is JS Comment)
+    <map:TemplateCollection.ExcelMaps>
+      <map:Table MapId="Analytics.StatsResultRowsTableMap" 
+                            ItemsSource="{map:Binding Path=StatsResultRows}">
+        <map:TableColumn DisplayMember="Description"
+                                 Header="Name"
+                                 Width="100"/>
+      </map:Table>
+  </map:TemplateCollection.ExcelMaps>
+  -->
+</map:TemplateCollection>

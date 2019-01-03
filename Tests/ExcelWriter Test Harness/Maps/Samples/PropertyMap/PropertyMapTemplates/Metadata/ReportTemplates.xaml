@@ -1,0 +1,59 @@
+﻿<ResourceMetadata xmlns="clr-namespace:Gam.MM.Framework.Export.Map;assembly=MM.Framework.Export.Map"
+                  DesignerFileName="ReportTemplateWorkbook.xlsx">
+    
+    <!-- ====================================== -->
+    <!--   LOCALY SCOPED STYLE RESOURCES        -->
+    <!-- ====================================== -->
+
+    <!-- GAMGreen100Colour -->
+    <CellStyle Key="BC3"
+               BorderThickness="3"
+               BorderColour="#FF006666" />
+
+    <CellStyle Key="BC1"
+               BorderThickness="1"
+               BorderColour="#FF006666"
+               TextAlignment="Center"/>
+
+    <CellStyle Key="H1"
+               BackgroundColour="#FF006666"
+               FontColour="White"
+               FontWeight="Bold"
+               FontSize="20" />
+
+    <CellStyle Key="PH1"
+               BackgroundColour="#FF006666"
+               FontColour="White"
+               FontWeight="Bold"
+               FontSize="14" />
+
+    <CellStyle Key="PV1"
+               BackgroundColour="#FF66A3A3"
+               FontColour="#FF006666"
+               FontWeight="Bold"
+               FontSize="14" />
+
+    <!-- ======================================= -->
+    <!--   Very Basic Template                   -->
+    <!-- ======================================= -->
+    <StackPanel Key="PropertyMapTemplate"
+                Orientation="Vertical"
+                CellStyleKey="BC3">
+                
+        <Cell Width="50" Value="R1:C0 (W=50)" CellStyleKey="BC1" />
+
+        <Property Header="Property Header 1" HeaderStyleKey="PH1"
+                  Value="Property Value 1" CellStyleKey="PV1" Height="20" />
+
+        <Property Header="Property Header 2" HeaderStyleKey="PH1"
+                  Value="Property Value 2" CellStyleKey="PV1" Height="20" RowIsHidden="True"/>
+
+        <StackPanel Key="Row - R1" Orientation="Horizontal">
+            <Cell Width="50" Value="R1:C0 (W=50)" CellStyleKey="BC1" />
+            <Cell Width="40" Value="R1:C1 (W=40)" CellStyleKey="BC1" ColumnIsHidden="True" />
+            <Cell Width="30" Value="R1:C2 (W=30)" CellStyleKey="BC1"  />
+        </StackPanel>
+
+    </StackPanel>
+
+</ResourceMetadata>

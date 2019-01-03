@@ -1,0 +1,130 @@
+﻿<ResourceMetadata xmlns="clr-namespace:Gam.MM.Framework.Export.Map;assembly=MM.Framework.Export.Map"
+                  DesignerFileName="ReportTemplateWorkbook.xlsx">
+
+    <!-- ====================================== -->
+    <!--   RESOURCES FOR DEFINING TEMPLATES     -->
+    <!--      (LOCALLY DEFINED RESOURCES)       -->
+    <!-- ====================================== -->
+    
+    <CellStyle Key="SubHeaderExportAlignLeft"
+               BasedOnKey="SubHeaderExport"
+               FontSize="12"
+               TextAlignment="Left" />
+        
+    <!-- GAM Green Border -->
+    <CellStyle Key="BorderedCells"
+               BorderThickness="2"
+               BorderColour="#006666" />
+
+    <!-- GAM Green Background -->
+    <CellStyle Key="GamGreenBackground"
+               BackgroundColour="#006666" />
+
+    <!-- ====================================================================== -->
+    <!--   A TEMPLATE CHART - REFERENCES A CHART IN THE DESIGNER WORKBOOK       -->
+    <!-- ====================================================================== -->
+    <ChartTemplate Key="InTemplate.PieChart"
+                   TemplateChartName="InTemplate.PieChart"
+                   TemplateSheetName="_InTemplateChartTemplate"/>
+
+    <!-- ====================================================================== -->
+    <!--   A TEMPLATE PICTURE - REFERENCES A PICTURE IN THE DESIGNER WORKBOOK   -->
+    <!-- ====================================================================== -->
+    <PictureTemplate Key="InTemplate.GamLogo"
+                     TemplatePictureName="InTemplate.GamLogo"
+                     TemplateSheetName="_InTemplateChartTemplate"/>
+
+    <!-- The heading, sub-heading, and GAM Logo-->
+    <StackPanel Key="HeadingMap"
+                Orientation="Vertical"
+                SpanLastColumn="True">
+
+        <!-- Cell that spans across the page as a heading -->
+        <Cell CellStyleKey="HeaderExport"
+              SpanLastColumn="True"
+              Value="Pie Chart &amp; Image" />
+
+        <!-- The thin white line -->
+        <Cell SpanLastColumn="True" Height="2" />
+
+        <!-- A sub-heading with an embedded GAM Logo image -->
+        <StackPanel Orientation="Horizontal"
+                    SpanLastColumn="True">
+
+            <!-- The sub-heading -->
+            <Cell CellStyleKey="SubHeaderExport"
+                  Width="70" Height="22"
+                  Value="Worksheet Sub-Heading..... with a logo" />
+
+            <!-- The GAM Logo -->
+            <Picture CellStyleKey="GamGreenBackground"
+                     SpanLastColumn="True"
+                     PictureTemplateKey="InTemplate.GamLogo"
+                     Width="10">
+                
+                <Picture.Placement>
+                    <Placement Height="10"
+                               Width="10"
+                               VerticalOffset="6"
+                               HorizontalOffset="0" />
+                </Picture.Placement>                    
+            </Picture>
+
+        </StackPanel>
+
+        <!-- A Padding Row-Cell -->
+        <Cell Height="10" />
+
+    </StackPanel>
+
+    <!-- ======================================================= -->
+    <!--  A RE-USABLE MAP TABLE + CHART (GOES IN THE SHEET)      -->
+    <!-- ======================================================= -->
+    <StackPanel Key="PieChartAndImageMap"
+                Orientation="Vertical">
+
+        <!-- The headi, sub-heading and Logo -->
+        <ContentControl ContentKey="HeadingMap" />
+        
+        <!-- A nice place to put the Chart (A Pie Chart) -->
+        <StackPanel Orientation="Horizontal">
+
+            <!-- A Spacer Cell -->
+            <Cell Width="2.5"/>
+
+            <!-- The TableData (takes no UI space, just hosts the data) -->
+            <TableData ItemsSource="{Binding Values}"
+                    Key="PieChart.TableData">
+
+                <TableColumn Header="Heading"
+                             Height="20"
+                             DisplayMember="Heading"
+                             Width="10"/>
+
+                <TableColumn Header="Value"
+                             Height="20"
+                             CellStyleKey="NumberCellExport"
+                             DisplayMember="Value"
+                             Width="10" />
+            </TableData>
+
+
+            <!-- The Chart (Using the TableData) -->
+            <Chart Width="50"
+                   Height="200"
+                   TableDataKey="PieChart.TableData"
+                   ChartTemplateKey="InTemplate.PieChart"
+                   Title="{Binding Title}"/>
+
+            <!-- A Spacer Cell -->
+            <Cell Width="5"/>
+
+            <!-- The Table (Using the SAME TableData) -->
+            <Table CellStyleKey="BorderedCells"
+                   DefaultRowHeight="15"
+                   TableDataKey="PieChart.TableData"/>
+
+        </StackPanel>
+    </StackPanel>
+            
+</ResourceMetadata>

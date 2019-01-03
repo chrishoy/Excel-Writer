@@ -1,0 +1,76 @@
+﻿<ExcelDocumentMetadata xmlns="clr-namespace:Gam.MM.Framework.Export.Map;assembly=MM.Framework.Export.Map"
+                       DesignerFileName="ReportMetadataWorkbook.xlsx">
+
+    <!-- ====================================== -->
+    <!--           DOCUMENT METADATA            -->
+    <!--  PULLS TOGETHER TEMPLATE RESOURCES IN  -->
+    <!--     ORDER TO CONSTRUCT A DOCUMENT      -->
+    <!-- ====================================== -->
+
+    <ExcelDocumentMetadata.Resources>
+
+        <!-- to pull in resources for a central package add as MergeResources here -->
+        <!-- at runtime these will be merged from the supplied ResourcePackage     -->
+
+        <ResourceCollection>
+
+            <CellStyle Key="MyHeaderExportInline"
+                       BasedOnKey="HeaderExport"
+                       FontSize="15" />
+
+            <CellStyle Key="MyRightAlignedColumnHeaderExport"
+                       BasedOnKey="ColumnHeaderExport"
+                       FontSize="8"
+                       TextAlignment="Right" />
+
+            <ResourceCollection.MergeResources>
+                <ResourceMetadata Source="ReportTemplates" />
+            </ResourceCollection.MergeResources>
+            
+        </ResourceCollection>
+    </ExcelDocumentMetadata.Resources>
+
+    <!-- Allowable content for Sheets is SheetContainer or Sheet (perhaps both of type SheetBase) -->
+    <ExcelDocumentMetadata.Sheets>
+
+        <!-- =================================================================== -->
+        <!-- Sheet which will some content based on data supplied by a DataPart. -->
+        <!--                                                                     -->
+        <!-- The PartId is used to set the DataContext of the control to a       -->
+        <!-- data part, which should have a matching PartId property.            -->
+        <!-- =================================================================== -->
+        <Sheet PartId="BasedOnStylesDataPart"
+               SheetName="BasedOn Styles">
+
+            <StackPanel Orientation="Vertical">
+            
+                <!-- Title Row -->
+                <Cell Value="{Binding Path=Title}"
+                      CellStyleKey="MyHeaderExportInline"
+                      SpanLastColumn="True"/>
+
+                <Cell />
+
+                <Table Header="Table Header"
+                       SubHeader="Table Sub-Header"
+                       Footer="Table Footer"	
+                       SubFooter="Table Sub-Footer"
+                       ItemsSource="{Binding ExportRows}">
+
+                    <TableColumn CellStyleKey="DateCellExport"
+                         DisplayMember="SampleDate"
+                         Header="Sample Date"
+                         HeaderStyleKey="MyRightAlignedColumnHeaderExport"
+                         Width="20" />
+                </Table>
+
+                <Cell />
+
+                <ContentControl ContentKey="BasedOnStylesTemplate" />
+
+            </StackPanel>
+        </Sheet>
+
+    </ExcelDocumentMetadata.Sheets>
+
+</ExcelDocumentMetadata>

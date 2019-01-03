@@ -1,0 +1,18 @@
+﻿<Book xmlns="clr-namespace:ExcelWriter;assembly=ExcelWriter"
+      TemplateFileName="ReportMetadataWorkbook.xlsx">
+
+    <!-- ***************************************** -->
+    <!-- **   Data Part to Template Mappings    ** -->
+    <!-- ***************************************** -->
+    <Book.Parts>
+    
+        <!-- =============================================================== -->
+        <!-- InTemplateChart based template                                  -->
+        <!-- =============================================================== -->
+        <ExportPart DataSheetName="Stacked Bar Chart Sheet"
+                    PartId="StackedBarChartDataPart"
+                    TemplateId="StackedBarChartTemplate" />
+
+    </Book.Parts>
+
+</Book>

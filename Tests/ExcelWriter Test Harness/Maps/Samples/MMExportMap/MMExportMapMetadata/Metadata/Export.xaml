@@ -1,0 +1,122 @@
+﻿<map:ExportMetadata xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:map="clr-namespace:Gam.MM.Framework.Export.Map;assembly=MM.Framework.Export.Map">
+    
+    <map:ExportMetadata.Parts>
+
+        <map:ExportPart PartId="Analytics.AnalyticsWorkspaceData" 
+                        TemplateId="Analytics.AnalyticsWorkspaceDataTemplate" />
+        
+        <!-- return stats -->
+        <map:ExportPart PartId="Analytics.ReturnStatsData" 
+                        TemplateId="Analytics.ReturnStatsDataTemplate" />
+
+        <!-- risk stats -->
+        <map:ExportPart PartId="Analytics.RiskStatsData" 
+                        TemplateId="Analytics.RiskStatsDataTemplate" />
+
+        <!-- benchmark stats -->
+        <map:ExportPart PartId="Analytics.BenchmarkStatsData" 
+                        TemplateId="Analytics.BenchmarkStatsDataTemplate" />
+      
+        <!-- start - changed for gcse impl -->
+
+        <!-- Return stats -->
+        <map:ExportPart PartId="Analytics.ReturnStatisticsData"
+                        TemplateId="Analytics.ReturnStatisticsDataTemplate" />
+        <!-- Distribution stats -->
+        <map:ExportPart PartId="Analytics.DistributionStatisticsData"
+                        TemplateId="Analytics.DistributionStatisticsDataTemplate" />
+  
+        <!-- Risk stats -->
+        <map:ExportPart PartId="Analytics.RiskStatisticsData"
+                        TemplateId="Analytics.RiskStatisticsDataTemplate" />
+
+        <!-- Relative stats -->
+        <map:ExportPart PartId="Analytics.RelativeStatisticsData"
+                        TemplateId="Analytics.RelativeStatisticsDataTemplate" />
+
+        <!-- Regression stats -->
+        <map:ExportPart PartId="Analytics.RegressionStatisticsData"
+                        TemplateId="Analytics.RegressionStatisticsDataTemplate" />
+
+        <!-- end - changed for gcse impl -->
+
+        <!-- performance series -->
+        <map:ExportPart PartId="Analytics.PerformanceSeries" 
+                        TemplateId="Analytics.PerformanceSeriesTemplate" />
+
+        <!-- period return -->
+        <map:ExportPart PartId="Analytics.PeriodReturn" 
+                        TemplateId="Analytics.PeriodReturnTemplate" />
+
+        <!-- return distribution -->
+        <map:ExportPart PartId="Analytics.ReturnDistribution" 
+                        TemplateId="Analytics.ReturnDistributionTemplate" />
+
+        <!-- return scatter -->
+        <map:ExportPart PartId="Analytics.ReturnScatter" 
+                        TemplateId="Analytics.ReturnScatterTemplate" />
+        
+        <!-- correlation matrix -->
+        <map:ExportPart PartId="Analytics.CorrelationMatrix" 
+                        TemplateId="Analytics.CorrelationMatrixTemplate" />
+
+        <!-- allocs -->
+        <map:ExportPart PartId="HoldingAnalysis.Allocations" 
+                        TemplateId="HoldingAnalysis.AllocationsTemplate" />
+
+        <!-- allocs history -->
+        <map:ExportPart PartId="HoldingAnalysis.AllocationHistoryData" 
+                        TemplateId="HoldingAnalysis.AllocationHistoryDataTemplate" />
+
+        <!-- quartile performance -->
+        <map:ExportPart PartId="Analytics.QuartilePerformance"
+                        TemplateId="Analytics.QuartilePerformanceTemplate" />
+
+        <!-- excess returns -->
+        <map:ExportPart PartId="Analytics.ExcessReturns"
+                        TemplateId="Analytics.ExcessReturnsTemplate" />
+
+        <!-- Relative Strength -->
+        <map:ExportPart PartId="Analytics.RelativeStrengthData"
+                           TemplateId="Analytics.RelativeStrengthTemplate" />
+
+        <!-- single stat -->
+        <map:ExportPart PartId="Analytics.SingleStatistic"
+                           TemplateId="Analytics.SingleStatisticTemplate" />
+
+        <!-- risk return -->
+        <map:ExportPart PartId="Analytics.RiskReturn"
+                           TemplateId="Analytics.RiskReturnTemplate" />
+
+        <!-- History -->
+        <map:ExportPart PartId="Analytics.History"
+                        TemplateId="Analytics.HistoryTemplate" />
+      
+        <!-- Monthly returns table -->
+        <map:ExportPart PartId="Analytics.CompositeMonthlyReturns"
+                        TemplateId="Analytics.CompositeMonthlyReturnsTemplate" />
+
+        <!-- Stats results -->
+        <map:ExportPart IsComposite="True"
+                        PartId="Analytics.CompositeStatsRows"
+                        TemplateId="Analytics.CompositeStatsRowsTemplate" >
+          <map:ExportPart.CompositeTemplateMappings>
+            <map:TemplateMapping PartId="Analytics.StatsRows"
+                                 TemplateId="Analytics.StatsRowsTemplate" />
+            <map:TemplateMapping PartId="Analytics.CompStatsRows"
+                                 TemplateId="Analytics.CompStatsRowsTemplate" />
+          </map:ExportPart.CompositeTemplateMappings>
+
+        </map:ExportPart>
+
+        <!-- Holdings table -->
+        <map:ExportPart PartId="Analytics.HoldingsTable"
+                        TemplateId="Analytics.HoldingsTableTemplate" />
+
+        <!-- Performance vs correlation -->
+        <map:ExportPart PartId="Analytics.PerformanceCorrelation"
+                        TemplateId="Analytics.PerformanceCorrelationTemplate" />
+  
+    </map:ExportMetadata.Parts>
+</map:ExportMetadata>

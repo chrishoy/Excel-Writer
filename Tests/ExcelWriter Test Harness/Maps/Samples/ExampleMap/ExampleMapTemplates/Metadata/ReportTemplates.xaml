@@ -1,0 +1,276 @@
+﻿<map:TemplateCollection xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                        xmlns:map="clr-namespace:Gam.MM.Framework.Export.Map;assembly=MM.Framework.Export.Map"
+                        TemplateFileName="ReportTemplateWorkbook.xlsx">
+
+    <!-- ============================================================= -->
+    <!--   WE MAY SPECIFY MORE LOCALY SCOPED STYLE RESOURCES HERE,     -->
+    <!--   WHICH CAN POTENTIALLY SUPPLEMENT EXISTING STYLES            -->
+    <!--   IF WE WISH...                                               -->
+    <!-- ============================================================= -->
+    <map:TemplateCollection.StyleResources>
+
+        <map:CellStyle Key="SubHeaderExportAlignLeft"
+                       BasedOnKey="SubHeaderExport"
+                       FontSize="12"
+                       TextAlignment="Left" />
+        
+        <map:CellStyle Key="BorderedCells"
+                       BorderThickness="2">
+    
+            <!-- GAMGreen100Colour -->
+            <map:CellStyle.BorderColour>
+              <Color R="0" G="102" B="102" A="255"/>
+            </map:CellStyle.BorderColour>
+                  
+        </map:CellStyle>
+    
+    </map:TemplateCollection.StyleResources>
+
+    <!-- ============================================================= -->
+    <!--   WE MAY SPECIFY MORE LOCALY SCOPED RE-USABLE                 -->
+    <!--   MAP RESOURCES HERE.....                                     -->
+    <!-- ============================================================= -->
+    <map:TemplateCollection.Maps>
+
+        <map:Table Key="SeriesTableMap" CellStyleKey="BorderedCells"
+                   Header="{map:Binding Path=Legend}"
+                   ItemsSource="{map:Binding Path=Values}">
+
+            <map:TableColumn Header="Date"
+                             CellStyleKey="DateCellExport"
+                             DisplayMember="Date" />
+
+            <map:TableColumn Header="Value"
+                             CellStyleKey="NumberCellExport"
+                             DisplayMember="Value" />
+        </map:Table>
+
+
+        <!-- *********************************-->
+        <!-- ** A RE-USABLE MAP FOR A TABLE **-->
+        <!-- *********************************-->
+        <map:Table Key="ExampleReusableTable"
+                   Header="Table Header"
+                   SubHeader="Table Sub-Header"
+                   Footer="Table Footer"	
+                   SubFooter="Table Sub-Footer"
+                   ItemsSource="{map:Binding ExportRows}">
+
+            <!-- Properties written above the table -->
+            <map:Table.Properties>
+                
+                <map:Property Header="Number of Rows"
+                              Value="{map:Binding ExportRows.Count}" />
+                
+                <map:Property Header="Current Date"
+                              Value="{map:Binding CurrentDate}"
+                              CellStyleKey="DateCellExport" />
+                
+            </map:Table.Properties>
+
+            <map:TableColumn CellStyleKey="DateCellExport"
+                             DisplayMember="SampleDate"
+                             Header="Date"
+                             Width="150"
+                             SuppressSeries="True" />
+        </map:Table>
+
+        <!-- **********************************************-->
+        <!-- ** A RE-USABLE MAP FOR A MORE COMPLEX TABLE **-->
+        <!-- **********************************************-->
+        <map:Table Key="ExampleReUsableTable2"
+                   ItemsSource="{map:Binding ExportRows}"
+                   DataRegionDefinedName="Table1Data"
+                   Header="TABLE HEADER"
+                   SubHeader="TABLE SUB-HEADER"
+                   Footer="---------------- FOOTER ---------------------"
+                   SubFooter="------------- SUB-FOOTER --------------------"
+                   >
+
+            <map:Table.Properties>
+
+                <map:Property Header="Count of Items"
+                              Value="{map:Binding ExportRows.Count}" />
+
+                <map:Property CellStyleKey="DateCellExport"
+                              Header="Current Date"
+                              Value="{map:Binding CurrentDate}" />
+
+            </map:Table.Properties>
+
+            <map:Table.ColumnHeaders>
+                <map:TableColumnHeader Header="GROUP HEADER"
+                                       Height="60"
+                                       Level="0"
+                                       Start="2"
+                                       Finish="4"/>
+            </map:Table.ColumnHeaders>
+
+            <!-- NB! The HeaderExport style key below shoud be a default -->
+            <map:TableColumn CellStyleKey="DateCellExport"
+                             DisplayMember="SampleDate"
+                             Header="Date"
+                             Width="150" />
+        </map:Table>
+
+        <!-- *********************************-->
+        <!-- ** A RE-USABLE MAP FOR A TABLE **-->
+        <!-- *********************************-->
+        <map:Table Key="MultiSeriesDataTable"
+                   Header="{map:Binding Legend}"
+                   ItemsSource="{map:Binding Values}">
+
+            <!-- Properties written above the table -->
+            <map:Table.Properties>
+
+                <map:Property Header="Number of Rows"
+                              Value="{map:Binding ExportRows.Count}" />
+
+                <map:Property Header="Current Date"
+                              Value="{map:Binding CurrentDate}"
+                              CellStyleKey="DateCellExport" />
+
+            </map:Table.Properties>
+
+            <map:TableColumn CellStyleKey="DateCellExport"
+                             DisplayMember="SampleDate"
+                             Header="Date"
+                             Width="150"
+                             SuppressSeries="True" />
+        </map:Table>
+
+    </map:TemplateCollection.Maps>
+
+    <!-- ============================================================= -->
+    <!--                         TEMPLATES                             -->
+    <!-- ============================================================= -->
+
+    <!-- ======================================= -->
+    <!--   ExportViewItemTemplate                -->
+    <!-- ======================================= -->
+    <map:Template DataTemplateSheet="_PerfDataSheet"
+                  PresentationTemplateSheet="_PerfChartSheet"
+                  TemplateId="ExportViewItemTemplate">
+        
+        <map:StackPanel Orientation="Horizontal">
+        
+            <!-- ============================================= -->
+            <!--  USE OF RE-USABLE TABLE MAP (DEFINED ABOVE)   -->
+            <!-- ============================================= -->
+            <map:ContentControl ContentKey="ExampleReusableTable" />
+
+            <!-- Just to show a space between tables 
+            <map:Cell Width="50" />-->
+            
+            <!-- ============================================= -->
+            <!--  USE OF RE-USABLE TABLE MAP (DEFINED ABOVE)   -->
+            <!-- ============================================= 
+            <map:ContentControl ContentKey="ExampleReusableTable" />-->
+
+        </map:StackPanel>
+
+    </map:Template>
+
+    <!-- ======================================= -->
+    <!--   composite perf template               -->
+    <!-- ======================================= -->
+    <map:Template DataTemplateSheet="_CompositePerfDataSheet"
+                  TemplateId="CompositePerformanceDataTemplate">
+
+        <map:StackPanel Orientation="Vertical" >
+
+            <map:Cell Value="{map:Binding FundName}"
+                      CellStyleKey="HeaderExport"
+                      SpanLastColumn="true"/>
+
+            <!-- Blank Row -->
+            <map:Cell Value="{map:Binding FundCode, StringFormat='Fund code is {0}'}" />
+
+            <!-- Contains some properties -->
+            <map:StackPanel Orientation="Horizontal">
+
+                <map:Property Header="Fund Code 1"
+                              Value="{map:Binding FundCode}" />
+
+                <map:Property Header="FundCode 2"
+                              Value="{map:Binding FundCode}" />
+
+                <map:Property Header="FundName"
+                              Value="{map:Binding FundName}" />
+
+            </map:StackPanel>
+
+            <!-- Blank Row -->
+            <map:Cell />
+
+            <!-- Contains 2 x tables-->
+            <map:StackPanel Orientation="Horizontal" Key="CompositeStackPanel">
+
+                <!-- TABLE 1 - Used to present Perf1Template mapped data -->
+                <map:ContentControl ContentKey="ExampleReUsableTable2" Key="ContentControlDP1"
+                                    DataContext="{map:Binding DataParts[1]}" />
+                
+                <!-- Blank Column -->
+                <map:Cell />
+
+                <!-- TABLE 2 - Used to present Perf2Template mapped data -->
+                <map:ContentControl ContentKey="ExampleReUsableTable2" Key="ContentControlDP2"                                     
+                                    DataContext="{map:Binding DataParts[0]}" />
+
+            </map:StackPanel>
+
+            <!-- Contains some more properties -->
+            <map:StackPanel Orientation="Horizontal">
+
+                <map:Property Header="Fund Code 1"
+                              Value="{map:Binding FundCode}" />
+
+                <map:Property Header="FundCode 2"
+                              Value="{map:Binding FundCode}" />
+
+                <map:Property Header="FundName"
+                              Value="{map:Binding FundName}" />
+
+            </map:StackPanel>
+
+        </map:StackPanel>
+
+    </map:Template>
+
+    <!-- ======================================= -->
+    <!--   composite perf template               -->
+    <!-- ======================================= -->
+    <map:Template DataTemplateSheet="_CompositePerfDataSheet"
+                  TemplateId="CompositePerformanceDataTemplate2">
+
+        <!-- Contains as many tables are there are DataParts -->
+        <map:StackPanel Orientation="Horizontal"
+                        ItemsSource="{map:Binding DataParts}"
+                        ItemTemplateMapKey="ExampleReUsableTable2">
+        </map:StackPanel>
+
+    </map:Template>
+
+    <!-- A Template which will display a data part that exposes multiple series -->
+    <map:Template TemplateId="MultiSeriesDataPartTemplate">
+
+        <map:StackPanel Orientation="Vertical">
+
+            <!-- Some Heading -->
+            <map:Cell CellStyleKey="HeaderExport"
+                      Value=" ItemsSource={map:Binding Path=MultiSeriesData.SeriesDataList}"
+                      SpanLastColumn="True" />
+
+            <!-- A Blank Line -->
+            <map:Cell />
+            
+            <!-- A StackPanel containing the tables alongside each other -->
+            <map:StackPanel Orientation="Horizontal"
+                            ItemsSource="{map:Binding Path=MultiSeriesData.SeriesDataList}"
+                            ItemTemplateMapKey="SeriesTableMap" />
+                
+        </map:StackPanel>            
+        
+    </map:Template>
+
+</map:TemplateCollection>

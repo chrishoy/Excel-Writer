@@ -1,0 +1,86 @@
+﻿<ResourceMetadata xmlns="clr-namespace:Gam.MM.Framework.Export.Map;assembly=MM.Framework.Export.Map"
+                  DesignerFileName="ReportTemplateWorkbook.xlsx">
+
+    <!-- ====================================== -->
+    <!--   RESOURCES FOR DEFINING TEMPLATES     -->
+    <!--      (LOCALLY DEFINED RESOURCES)       -->
+    <!-- ====================================== -->
+
+    <!-- GAMGreen100Colour -->
+    <CellStyle Key="BC3"
+               BorderThickness="3"
+               BorderColour="#FF006666" />
+
+    <CellStyle Key="H1"
+               BackgroundColour="#FF006666"
+               FontColour="White"
+               FontWeight="Bold"
+               FontSize="20" />
+
+    <!-- ======================================= -->
+    <!--   Column Widths Map Template                   -->
+    <!-- ======================================= -->
+    <StackPanel Key="ColumnWidthsMapTemplate"
+                Orientation="Vertical"
+                CellStyleKey="BC3">
+
+        <Cell Value="Various Column Widths and how they map"
+              CellStyleKey="H1"
+              SpanLastColumn="True" />
+
+        <StackPanel Key="Row - R1" Orientation="Horizontal">
+            <Cell Width="0.1" Value="0.1" />
+            <Cell Width="0.25" Value="0.25" />
+            <Cell Width="0.5" Value="0.5" />
+            <Cell Width="0.75" Value="0.75" />
+            <Cell Width="1" Value="1" />
+            <Cell Width="2" Value="2" />
+            <Cell Width="3" Value="3" />
+            <Cell Width="4" Value="4" />
+            <Cell Width="5" Value="5" />
+            <Cell Width="6" Value="6" />
+            <Cell Width="7" Value="7" />
+            <Cell Width="8" Value="8" />
+            <Cell Width="9" Value="9" />
+            <Cell Width="10" Value="10" />
+            <Cell Width="10.5" Value="10.5" />
+            <Cell Width="15" Value="15" />
+            <Cell Width="20" Value="20" />
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal">
+            <Cell />
+            <Cell />
+            <Cell />
+            <Cell />
+            <Cell />
+            <Cell />
+            <Cell />
+            <Cell />
+            <Cell />
+            <Cell />
+            <Cell />
+            <StackPanel Orientation="Vertical">
+                <Property Header="COL A" Value="0.1" />
+                <Property Header="COL B" Value="0.25" />
+                <Property Header="COL C" Value="0.5" />
+                <Property Header="COL D" Value="0.75" />
+                <Property Header="COL E" Value="1" />
+                <Property Header="COL F" Value="2" />
+                <Property Header="COL G" Value="3" />
+                <Property Header="COL H" Value="4" />
+                <Property Header="COL I" Value="5" />
+                <Property Header="COL J" Value="6" />
+                <Property Header="COL K" Value="7" />
+                <Property Header="COL L" Value="8" />
+                <Property Header="COL M" Value="9" />
+                <Property Header="COL N" Value="10" />
+                <Property Header="COL O" Value="10.5" />
+                <Property Header="COL P" Value="15" />
+                <Property Header="COL Q" Value="20" />
+            </StackPanel>
+        </StackPanel>
+
+    </StackPanel>
+
+</ResourceMetadata>

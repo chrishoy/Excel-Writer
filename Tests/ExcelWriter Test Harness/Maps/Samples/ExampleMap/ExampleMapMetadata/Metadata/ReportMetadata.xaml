@@ -1,0 +1,79 @@
+﻿<map:ExportMetadata xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                       xmlns:map="clr-namespace:Gam.MM.Framework.Export.Map;assembly=MM.Framework.Export.Map"
+                       TemplateFileName="ReportMetadataWorkbook.xlsx">
+
+    <!-- ***************************************** -->
+    <!-- **   Data Part to Template Mappings    ** -->
+    <!-- ***************************************** -->
+    <map:ExportMetadata.MappingPlaceholders>
+        <map:MappingPlaceholder Id="_VaRByCountry" SheetName="Report header"/>
+    </map:ExportMetadata.MappingPlaceholders>
+
+    <!-- ***************************************** -->
+    <!-- **   Data Part to Template Mappings    ** -->
+    <!-- ***************************************** -->
+    <map:ExportMetadata.Parts>
+
+        <map:ExportPart DataSheetName="_PeriodReturnDataTemplate"
+                        DataSheetHidden="True"
+                        Description="VaR Key Stats By Country"
+                        IsMandatory="False"
+                        PresentationSheetName="_VaRByCountryChart"
+                        PartId="Risk.SMEquKeyStatsByCountry"
+                        TemplateId="Risk.SMEquKeyStatsByCountryTemplate">
+            
+            <map:ExportPart.Mappings>
+                <map:DrawingMapping PlaceholderId="_VaRByCountry"/>
+            </map:ExportPart.Mappings>
+            
+        </map:ExportPart>
+
+        <!-- =============================================================== -->
+        <!-- ExportViewItem based template                                   -->
+        <!-- =============================================================== 
+        <map:ExportPart DataSheetName="Multi-Series Data Part Sheet"
+                        PartId="MultiSeriesDataPartId"
+                        TemplateId="MultiSeriesDataPartTemplate" />-->
+
+        <!-- =============================================================== -->
+        <!-- ExportViewItem based template                                   -->
+        <!-- =============================================================== -->
+        <map:ExportPart DataSheetName="ExportViewItem Data Sheet"
+                        PresentationSheetName="ExportViewItem Chart Sheet"
+                        PartId="PerformancePart1"
+                        TemplateId="ExportViewItemTemplate" />
+        
+        <!-- =============================================================== -->
+        <!-- composite performance part                                      -->
+        <!-- made up of more than 1 data part                                -->
+        <!-- each data part maps to a different template                     -->
+        <!-- =============================================================== -->
+        <map:ExportPart DataSheetName="CompositePerformance"
+                        IsComposite="True"
+                        PartId="CompositePerformanceData"
+                        TemplateId="CompositePerformanceDataTemplate">
+
+            <map:ExportPart.CompositeTemplateMappings>
+
+                <map:TemplateMapping PartId="PerformancePart2"
+                                     TemplateId="Perf1Template" />
+
+                <map:TemplateMapping PartId="PerformancePart3"
+                                     TemplateId="Perf2Template" />
+
+            </map:ExportPart.CompositeTemplateMappings>
+
+        </map:ExportPart>
+
+        <!-- =============================================================== -->
+        <!-- This time using the same CompositePerformance DataPart          -->
+        <!-- but this time the template contains a StackPanel which          -->
+        <!-- will iterate over the data parts                                -->
+        <!-- =============================================================== -->
+        <map:ExportPart DataSheetName="CompositePerformance 2"
+                        PartId="CompositePerformanceData"
+                        TemplateId="CompositePerformanceDataTemplate2" />
+
+    </map:ExportMetadata.Parts>
+
+</map:ExportMetadata>

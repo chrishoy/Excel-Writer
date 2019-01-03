@@ -1,0 +1,37 @@
+﻿<ExcelDocumentMetadata xmlns="clr-namespace:Gam.MM.Framework.Export.Map;assembly=MM.Framework.Export.Map"
+                       TemplateFileName="ReportMetadataWorkbook.xlsx">
+
+    <!-- Q: Is the DesignerFileName above where all Excel resources can be found (i.e. is there only 1 template document now) -->
+
+    <ExcelDocumentMetadata.Resources>
+        <ResourceCollection>
+            <!-- to pull in resources for a central package add as MergeResources here -->
+            <!-- at runtime these will be merged from the supplied ResourcePackage     -->
+            <ResourceCollection.MergeResources>
+                <ResourceMetadata Source="ReportTemplates" />
+            </ResourceCollection.MergeResources>
+        </ResourceCollection>
+    </ExcelDocumentMetadata.Resources>
+
+    <!-- ***************************************** -->
+    <!-- **   Data Part to Template Mappings    ** -->
+    <!-- ***************************************** -->
+    <ExcelDocumentMetadata.Sheets>
+    
+        <!-- =============================================================== -->
+        <!-- InTemplateChart based template                                  -->
+        <!-- =============================================================== 
+        <Sheet SheetName="In Template Chart Sheet"
+               PartId="InTemplateChartWithEnableDataPart"
+               DesignerSheetName="" -->
+
+        <Sheet SheetName="In Template Chart Sheet"
+               PartId="InTemplateChartWithEnableDataPart">
+            
+            <ContentControl ContentKey="InTemplateChartWithEnableTemplate" />
+            
+        </Sheet>
+        
+    </ExcelDocumentMetadata.Sheets>
+
+</ExcelDocumentMetadata>

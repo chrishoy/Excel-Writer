@@ -1,0 +1,144 @@
+﻿<ResourceMetadata xmlns="clr-namespace:Gam.MM.Framework.Export.Map;assembly=MM.Framework.Export.Map"
+                  DesignerFileName="ReportTemplateWorkbook.xlsx">
+
+    <!-- ====================================== -->
+    <!--   RESOURCES FOR DEFINING TEMPLATES     -->
+    <!--      (LOCALLY DEFINED RESOURCES)       -->
+    <!-- ====================================== -->
+
+    <CellStyle Key="MyHeaderExport"
+               BasedOnKey="HeaderExport"
+               FontSize="15" />
+
+    <CellStyle Key="RightAlignedColumnHeaderExport"
+               BasedOnKey="ColumnHeaderExport"
+               FontSize="8"
+               TextAlignment="Right" />
+
+    <!-- ======================================= -->
+    <!--   BasedOn Styles Template               -->
+    <!-- ======================================= -->
+    <StackPanel Key="BasedOnStylesTemplate"
+                Orientation="Vertical">
+        
+        <!-- Title Row -->
+        <Cell Value="{Binding Path=Title}"
+              CellStyleKey="MyHeaderExport"
+              SpanLastColumn="True"/>
+        
+        <Cell />
+
+        <Table Header="Table Header"
+               SubHeader="Table Sub-Header"
+               Footer="Table Footer"	
+               SubFooter="Table Sub-Footer"
+               ItemsSource="{Binding ExportRows}">
+
+            <TableColumn CellStyleKey="DateCellExport"
+                         DisplayMember="SampleDate"
+                         Header="Sample Date"
+                         HeaderStyleKey="RightAlignedColumnHeaderExport"
+                         Width="20" />
+        </Table>
+
+        <!-- =============== -->
+        <!-- Based On STYLES -->
+        <!-- =============== -->
+        <!--
+        <StackPanel Orientation="Horizontal">
+            <Cell Value="Built-in CellStyleKey='HeaderExport'" CellStyleKey="CellExport" Width="60"/>
+            <Cell CellStyleKey="HeaderExport" Width="40">A HEADING</Cell>
+        </StackPanel>
+                
+        <StackPanel Orientation="Horizontal">
+            <Cell Value="Built-in CellStyleKey='SubHeaderExport'" CellStyleKey="CellExport" />
+            <Cell CellStyleKey="SubHeaderExport">A Sub-Heading</Cell>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal">
+            <Cell Value="Built-in CellStyleKey='SubHeaderSmallExport'" CellStyleKey="CellExport" />
+            <Cell Value="A Sub-Heading" CellStyleKey="SubHeaderSmallExport"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal">
+            <Cell Value="Built-in CellStyleKey='FooterExport'" CellStyleKey="CellExport" />
+            <Cell Value="A Footer" CellStyleKey="FooterExport"/>
+        </StackPanel>
+                
+        <StackPanel Orientation="Horizontal">
+            <Cell Value="Built-in CellStyleKey='SubFooterExport'" CellStyleKey="CellExport" />
+            <Cell Value="A Sub-Footer" CellStyleKey="SubFooterExport"/>
+        </StackPanel>
+                
+        <StackPanel Orientation="Horizontal">
+            <Cell Value="Built-in CellStyleKey='ColumnHeaderExport'" CellStyleKey="CellExport" />
+            <Cell Value="A Column Header" CellStyleKey="ColumnHeaderExport" />
+        </StackPanel>
+                
+        <StackPanel Orientation="Horizontal">
+            <Cell Value="Built-in CellStyleKey='PropertyHeaderExport'" CellStyleKey="CellExport"/>
+            <Cell Value="A Property Header" CellStyleKey="PropertyHeaderExport" />
+        </StackPanel>
+                
+        <StackPanel Orientation="Horizontal">
+            <Cell Value="Built-in CellStyleKey='CellExport'" CellStyleKey="CellExport" />
+            <Cell Value="A Cell" CellStyleKey="CellExport" />
+        </StackPanel>
+                
+        <StackPanel Orientation="Horizontal">
+            <Cell Value="Built-in CellStyleKey='InlineTextExport'" CellStyleKey="CellExport" />
+            <Cell Value="An Inline Text Cell" CellStyleKey="InlineTextExport" />
+        </StackPanel>
+                
+        <StackPanel Orientation="Horizontal">
+            <Cell Value="Built-in CellStyleKey='NumberCellExport'" CellStyleKey="CellExport" />
+            <Cell Value="{Binding Path=ExampleNumber}" CellStyleKey="NumberCellExport"/>
+        </StackPanel>
+                
+        <StackPanel Orientation="Horizontal">
+            <Cell Value="Built-in CellStyleKey='Number2DPCellExport'" CellStyleKey="CellExport" />
+            <Cell Value="{Binding Path=ExampleNumber}" CellStyleKey="Number2DPCellExport" />
+        </StackPanel>
+                
+        <StackPanel Orientation="Horizontal">
+            <Cell Value="Built-in CellStyleKey='Percent2DPCellExport'" CellStyleKey="CellExport"/>
+            <Cell Value="{Binding Path=ExampleNumber}" CellStyleKey="Percent2DPCellExport"/>
+        </StackPanel>
+                
+        <StackPanel Orientation="Horizontal">
+            <Cell Value="Built-in CellStyleKey='ShortDateCellExport'" CellStyleKey="CellExport" Width="60"/>
+            <Cell Value="{Binding Path=ExampleDateTime}" CellStyleKey="ShortDateCellExport" Width="40"/>
+        </StackPanel>
+                
+        <StackPanel Orientation="Horizontal">
+            <Cell Value="Built-in CellStyleKey='DateCellExport'" CellStyleKey="CellExport" Width="60"/>
+            <Cell Value="{Binding Path=ExampleDateTime}" CellStyleKey="DateCellExport" Width="40"/>
+        </StackPanel>
+                
+        <StackPanel Orientation="Horizontal">
+            <Cell Value="Built-in CellStyleKey='DateTimeCellExport'" CellStyleKey="CellExport" Width="60"/>
+            <Cell Value="{Binding Path=ExampleDateTime}" CellStyleKey="DateTimeCellExport" Width="40"/>
+        </StackPanel>
+                
+        <StackPanel Orientation="Horizontal">
+            <Cell Value="Built-in CellStyleKey='BooleanCellExport'" CellStyleKey="CellExport" Width="60"/>
+            <Cell Value="True" CellStyleKey="BooleanCellExport" Width="40"/>
+        </StackPanel>-->
+
+        <!-- =================== -->
+        <!-- NON-BUILT-IN STYLES -->
+        <!-- =================== -->
+        
+        <!--<StackPanel Orientation="Horizontal">
+            <Cell Value="CellStyleKey='CellExportUnderlined'" CellStyleKey="CellExport" Width="60"/>
+            <Cell Value="An underlined Cell" CellStyleKey="CellExportUnderlined" Width="60"/>
+        </StackPanel>-->
+
+        <!-- A Padding Entity 
+        <Padding CellStyleKey="PaddedCells"
+                    Value="PAD..."
+                    SpanLastRow="True"/>-->
+            
+    </StackPanel>
+
+</ResourceMetadata>

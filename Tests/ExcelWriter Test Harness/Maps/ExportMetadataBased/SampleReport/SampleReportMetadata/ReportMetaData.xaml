@@ -1,0 +1,14 @@
+﻿<Book xmlns="clr-namespace:ExcelWriter;assembly=ExcelWriter"
+      TemplateFileName="ReportMetadataWorkbook.xlsx">
+
+    <!--  List of Parts  -->
+    <Book.Parts>
+
+        <!--  Matches Data Part with PartId='SampleReportDataPart' to template with TemplateId='SampleReportTemplate'  -->
+        <ExportPart DataSheetHidden="False"
+                    PartId="SampleReportDataPart"
+                    TemplateId="SampleReportTemplate" />
+
+    </Book.Parts>
+
+</Book>

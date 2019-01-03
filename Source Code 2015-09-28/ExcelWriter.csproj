@@ -1,0 +1,352 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <GenerateResourceNeverLockTypeAssemblies>true</GenerateResourceNeverLockTypeAssemblies>
+    <Configuration Condition=" '$(Configuration)' == '' ">Dev</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0726D25E-498B-4058-B151-3E30065918ED}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ExcelWriter</RootNamespace>
+    <AssemblyName>ExcelWriter</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <!--    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>	-->
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Dev|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Dev\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Int|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Int\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Int|Mixed Platforms' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Int\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <OutputPath>Bin\Test\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Live|AnyCPU'">
+    <OutputPath>Bin\Live</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.5.5631.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Assemblies\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="ReachFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ColourPalette\ColourGroup.cs" />
+    <Compile Include="ColourPalette\ColourPalette.cs" />
+    <Compile Include="ColourPalette\ColourPaletteType.cs" />
+    <Compile Include="ColourPalette\GamPalette.cs" />
+    <Compile Include="Constants\ExcelConstants.cs" />
+    <Compile Include="Constants\ResourceTypeNames.cs" />
+    <Compile Include="Entities\ChartDataRangeInfo.cs" />
+    <Compile Include="Entities\DataParts\IPreparable.cs" />
+    <Compile Include="Entities\DataParts\IDataPart.cs" />
+    <Compile Include="Entities\Document\DocumentMetadataType.cs" />
+    <Compile Include="Entities\Document\ExcelDocumentMetadata.cs" />
+    <Compile Include="Entities\Document\DocumentMetadataPackage.cs" />
+    <Compile Include="Entities\Document\DocumentMetadataBase.cs" />
+    <Compile Include="Entities\Maps and layout\ChartTemplate\ChartTemplate.cs" />
+    <Compile Include="Entities\Maps and layout\DataContextBase.cs" />
+    <Compile Include="Entities\Maps and layout\PositionableMap.cs" />
+    <Compile Include="Entities\Maps and layout\PictureTemplate\PictureTemplate.cs" />
+    <Compile Include="Entities\Maps and layout\Picture\Picture.cs" />
+    <Compile Include="Entities\Maps and layout\Placement.cs" />
+    <Compile Include="Entities\Maps and layout\ShapeTemplate\ShapeTemplate.cs" />
+    <Compile Include="Helpers\Guard.cs" />
+    <Compile Include="Helpers\ExcelColumnWidthConverter.cs" />
+    <Compile Include="Helpers\GroupHeaderRowInfo.cs" />
+    <Compile Include="OpenXml\Excel\CellExtensions.cs" />
+    <Compile Include="OpenXml\Excel\ChartingExtensions.cs" />
+    <Compile Include="OpenXml\Excel\CompositeRangeReference.cs" />
+    <Compile Include="OpenXml\Excel\Constants.cs" />
+    <Compile Include="OpenXml\Excel\Helpers.cs" />
+    <Compile Include="OpenXml\Excel\Model\ChartModel.cs" />
+    <Compile Include="OpenXml\Excel\Model\ChartType.cs" />
+    <Compile Include="OpenXml\Excel\Model\DefinedNameModel.cs" />
+    <Compile Include="OpenXml\Excel\Model\ExcelPositionalInfo.cs" />
+    <Compile Include="OpenXml\Excel\Model\IndexOffset.cs" />
+    <Compile Include="OpenXml\Excel\Model\IndexWithOffset.cs" />
+    <Compile Include="OpenXml\Excel\Model\ModelBase.cs" />
+    <Compile Include="OpenXml\Excel\Model\PictureModel.cs" />
+    <Compile Include="OpenXml\Excel\Model\ShapeModel.cs" />
+    <Compile Include="OpenXml\Excel\RangeReference.cs" />
+    <Compile Include="OpenXml\Excel\SheetDataExtensions.cs" />
+    <Compile Include="OpenXml\Excel\SheetsExtensions.cs" />
+    <Compile Include="OpenXml\Excel\SpreadsheetDocumentExtensions.cs" />
+    <Compile Include="OpenXml\Excel\StylesheetExtensions.cs" />
+    <Compile Include="OpenXml\Excel\WorkbookExtensions.cs" />
+    <Compile Include="OpenXml\Excel\WorkbookPartExtensions.cs" />
+    <Compile Include="OpenXml\Excel\WorksheetExtensions.cs" />
+    <Compile Include="OpenXml\Excel\WorksheetPartExtensions.cs" />
+    <Compile Include="OpenXml\OpenXmlException.cs" />
+    <Compile Include="Services\DebugLogger.cs" />
+    <Compile Include="Services\ExportGenerator.Excel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\ExportGenerator.ExcelReportMappings.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\ExportGenerator.Helpers.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\ExportGenerator.ShapeHelpers.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\Counter.cs" />
+    <Compile Include="Entities\ExcelMapCoOrdinates\RowOrColumnInfo.cs" />
+    <Compile Include="Entities\ExcelMapCoOrdinates\RowOrColumnsModel.cs" />
+    <Compile Include="Entities\ExcelMapCoOrdinates\RowOrColumnInfoStore.cs" />
+    <Compile Include="Entities\ExcelMapCoOrdinates\IStorable.cs" />
+    <Compile Include="Entities\ExcelMapCoOrdinates\Store.cs" />
+    <Compile Include="Entities\ExcelMapCoOrdinates\MapStore.cs" />
+    <Compile Include="Entities\ExcelMapCoOrdinates\LayeredRowsDictionary.cs" />
+    <Compile Include="Entities\ExcelMapCoOrdinates\LayeredColumnsDictionary.cs" />
+    <Compile Include="Entities\ExcelMapCoOrdinates\LayeredCellsDictionary.cs" />
+    <Compile Include="Entities\ExcelMapCoOrdinates\LayeredRowInfo.cs" />
+    <Compile Include="Entities\ExcelMapCoOrdinates\LayeredColumnInfo.cs" />
+    <Compile Include="Entities\ExcelMapCoOrdinates\ExcelMapCoOrdinatePadding.cs" />
+    <Compile Include="Entities\ExcelMapCoOrdinates\ExcelMapCoOrdinateExtensions.cs" />
+    <Compile Include="Entities\ExcelMapCoOrdinates\ExcelMapCoOrdinatePlaceholder.cs" />
+    <Compile Include="Entities\ExcelMapCoOrdinates\ExcelCellBorderInfoExtensions.cs" />
+    <Compile Include="Entities\ExcelMapCoOrdinates\ExcelCellInfosDictionary.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\ExcelMapCoOrdinates\ExcelCellStyleInfo.cs" />
+    <Compile Include="Entities\ExcelMapCoOrdinates\ExcelRowInfoExtensions.cs" />
+    <Compile Include="Entities\ExcelMapCoOrdinates\LayeredCellInfo.cs" />
+    <Compile Include="Entities\Maps and layout\Chart\ChartBasedOnSeriesIndexOption.cs" />
+    <Compile Include="Entities\Maps and layout\Chart\ChartCategory1AxisOption.cs" />
+    <Compile Include="Entities\Maps and layout\Chart\ChartExcludeOption.cs" />
+    <Compile Include="Entities\Maps and layout\Chart\ChartOptionBase.cs" />
+    <Compile Include="Entities\Maps and layout\Chart\ChartOptions.cs" />
+    <Compile Include="Entities\Maps and layout\Chart\ChartSeriesColourOption.cs" />
+    <Compile Include="Entities\Maps and layout\Chart\IChartMetadata.cs" />
+    <Compile Include="Entities\Maps and layout\IExcelRowCompatible.cs" />
+    <Compile Include="Entities\Maps and layout\IExcelColumnCompatible.cs" />
+    <Compile Include="Entities\Resources\ResourceMetadataList.cs" />
+    <Compile Include="Entities\Resources\OpenXmlPackageInfo.cs" />
+    <Compile Include="Entities\Resources\IResourceContainer.cs" />
+    <Compile Include="Entities\Resources\ResourceData.cs" />
+    <Compile Include="Entities\Resources\ResourceStore.cs" />
+    <Compile Include="Entities\Resources\ResourcePackage.cs" />
+    <Compile Include="Entities\Resources\IResource.cs" />
+    <Compile Include="Entities\Resources\ResourceCollection.cs" />
+    <Compile Include="Entities\Resources\ResourceMetadata.cs" />
+    <Compile Include="Entities\Maps and layout\Chart\ChartSeriesInfo.cs" />
+    <Compile Include="Entities\Maps and layout\Sheets\Sheet.cs" />
+    <Compile Include="Entities\Maps and layout\Sheets\SheetCollection.cs" />
+    <Compile Include="Entities\Maps and layout\Shape\Shape.cs" />
+    <Compile Include="Entities\Packaging\ResourceInfoStore.cs" />
+    <Compile Include="Entities\Packaging\ResourceInfo.cs" />
+    <Compile Include="Helpers\TableColumnsInfo.cs" />
+    <Compile Include="Helpers\ExcelMapWriter.cs" />
+    <Compile Include="Helpers\ExcelSheetMapper.cs" />
+    <Compile Include="Helpers\OpenXmlExcelWriteManager.cs" />
+    <Compile Include="Helpers\PackageHelper.cs" />
+    <Compile Include="Helpers\TableColumnInfo.cs" />
+    <Compile Include="Services\ExportGenerator.StreamMerge.cs" />
+    <Compile Include="Services\ExportMapService.cs" />
+    <Compile Include="Services\IExportMapService.cs" />
+    <Compile Include="Services\ILogger.cs" />
+    <Compile Include="Services\NullLogger.cs" />
+    <Compile Include="Services\SeriesFactory.cs" />
+    <Compile Include="Services\TemplateSeriesInfo.cs" />
+    <Compile Include="StyleSelectors\PropertyValueCellStyleSelector.cs" />
+    <Compile Include="StyleSelectors\PropertyValueStyleKey.cs" />
+    <Compile Include="Entities\Maps and layout\Cell\Cell.cs" />
+    <Compile Include="Entities\Maps and layout\ContentControl\ContentControl.cs" />
+    <Compile Include="Entities\Maps and layout\BaseMap.cs" />
+    <Compile Include="Entities\Maps and layout\Chart\Chart.cs" />
+    <Compile Include="Entities\Maps and layout\Padding\Padding.cs" />
+    <Compile Include="Entities\Maps and layout\Property\Property.cs" />
+    <Compile Include="Entities\Maps and layout\Property\PropertyCollection.cs" />
+    <Compile Include="Entities\Maps and layout\StackPanel\StackPanel.cs" />
+    <Compile Include="Entities\Maps and layout\Styles\CellStyleSelectorCollection.cs" />
+    <Compile Include="Entities\Maps and layout\Styles\CellStyleSelector.cs" />
+    <Compile Include="Entities\Maps and layout\Styles\StyleBaseExtensions.cs" />
+    <Compile Include="Entities\Maps and layout\TableData\TableData.cs" />
+    <Compile Include="Entities\Maps and layout\TableData\TableDataRowInfo.cs" />
+    <Compile Include="Entities\Maps and layout\Table\Table.cs" />
+    <Compile Include="Entities\Templates\Templates.cs" />
+    <Compile Include="Entities\Maps and layout\MapCollection.cs" />
+    <Compile Include="Entities\Templates\TemplateCollection.cs" />
+    <Compile Include="Entities\Templates\Template.cs" />
+    <Compile Include="Entities\Maps and layout\Table\TableColumn.cs" />
+    <Compile Include="Entities\Maps and layout\Table\TableColumnCollection.cs" />
+    <Compile Include="Entities\Maps and layout\Table\TableColumnHeader.cs" />
+    <Compile Include="Entities\Maps and layout\Table\TableColumnHeaderCollection.cs" />
+    <Compile Include="Entities\Maps and layout\Styles\StylesCollection.cs" />
+    <Compile Include="Entities\Maps and layout\Styles\Style.cs" />
+    <Compile Include="Entities\Maps and layout\Styles\StyleBase.cs" />
+    <Compile Include="Entities\Maps and layout\Styles\CellStyle.cs" />
+    <Compile Include="Entities\Maps and layout\IExcelPreparable.cs" />
+    <Compile Include="Entities\DataParts\IPreparableDataPart.cs" />
+    <Compile Include="Entities\ExcelMapCoOrdinates\ExcelCellBorderInfo.cs" />
+    <Compile Include="Entities\ExcelMapCoOrdinates\ExcelCellAlignmentInfo.cs" />
+    <Compile Include="Entities\ExcelMapCoOrdinates\ExcelCellFontInfo.cs" />
+    <Compile Include="Entities\ExcelMapCoOrdinates\ExcelCellInfo.cs" />
+    <Compile Include="Entities\ExcelStylesManager\BordersDictionary.cs" />
+    <Compile Include="Entities\ExcelStylesManager\ExcelStylesManager.cs" />
+    <Compile Include="Entities\ExcelStylesManager\FillsDictionary.cs" />
+    <Compile Include="Entities\ExcelStylesManager\FontsDictionary.cs" />
+    <Compile Include="Entities\ExcelStylesManager\NumberFormatsDictionary.cs" />
+    <Compile Include="Entities\ExcelStylesManager\StylesDictionary.cs" />
+    <Compile Include="Entities\DataParts\XDocumentDataPart.cs" />
+    <Compile Include="Entities\DataParts\ExportParametersDataPart.cs" />
+    <Compile Include="Entities\Export Entities\ParagraphMapping.cs" />
+    <Compile Include="Entities\NameValueParameter.cs" />
+    <Compile Include="Entities\DataParts\CollectionDataPart.cs" />
+    <Compile Include="Entities\ExportParameters.cs" />
+    <Compile Include="Entities\Export Entities\IDocumentCustomProcess.cs" />
+    <Compile Include="Entities\Export Entities\MappingPlaceholderSetItem.cs" />
+    <Compile Include="Entities\Export Entities\MappingPlaceholderSet.cs" />
+    <Compile Include="Entities\DataParts\ICompositeDataPart.cs" />
+    <Compile Include="Entities\ExcelMapCoOrdinates\ExcelDefinedNameInfo.cs" />
+    <Compile Include="Entities\ExcelMapCoOrdinates\ExcelRowInfo.cs" />
+    <Compile Include="Entities\ExcelMapCoOrdinates\ExcelColumnInfo.cs" />
+    <Compile Include="Entities\ExcelMapCoOrdinates\ExcelMapCoOrdinateRowList.cs" />
+    <Compile Include="Entities\ExcelMapCoOrdinates\ExcelMapCoOrdinateCellList.cs" />
+    <Compile Include="Entities\ExcelMapCoOrdinates\ExcelMapCoOrdinateRow.cs" />
+    <Compile Include="Entities\ExcelMapCoOrdinates\ExcelMapCoOrdinateCell.cs" />
+    <Compile Include="Entities\ExcelMapCoOrdinates\ExcelMapCoOrdinate.cs" />
+    <Compile Include="Entities\ExcelMapCoOrdinates\ExcelMapCoOrdinateContainer.cs" />
+    <Compile Include="Entities\Charts\ExcelChartOptions.cs" />
+    <Compile Include="Entities\Templates\TemplateMapping.cs" />
+    <Compile Include="Exceptions\ExportException.cs" />
+    <Compile Include="Exceptions\MetadataException.cs" />
+    <Compile Include="Entities\Export Entities\DrawingMapping.cs" />
+    <Compile Include="Entities\Export Entities\ExportMetadataPackage.cs" />
+    <Compile Include="Entities\Export Entities\ExportTripleSet.cs" />
+    <Compile Include="Entities\Export Entities\MappingPlaceholder.cs" />
+    <Compile Include="Entities\ExportToMemoryStreamResult.cs" />
+    <Compile Include="Entities\Export Entities\RangeMapping.cs" />
+    <Compile Include="Entities\Export Entities\VisualMapping.cs" />
+    <Compile Include="Entities\Packaging\ExcelTemplateFileInfo.cs" />
+    <Compile Include="Entities\Packaging\ExcelTemplateInfo.cs" />
+    <Compile Include="Entities\Export Entities\ExportPart.cs" />
+    <Compile Include="Entities\Export Entities\ExportMetadata.cs" />
+    <Compile Include="Services\ExportGenerator.cs" />
+    <Compile Include="Entities\Packaging\ExcelTemplatePackage.cs" />
+    <Compile Include="Entities\Charts\ExportChartType.cs" />
+    <Compile Include="Helpers\StyleTranslator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\TempDiagnostics.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Themes\SharedMapStyleKeys.cs" />
+    <Compile Include="Binding\BindingContainer.cs" />
+    <Compile Include="Binding\BindingExtension.cs" />
+    <Compile Include="Binding\UnevaluatedBindingResult.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\ExportDataPart.cs" />
+    <Compile Include="Utility\ExportFiles.cs" />
+    <Compile Include="Utility\GenericExportDataPart.cs" />
+    <Compile Include="Utility\MemoryStreamResult.cs" />
+    <Compile Include="Utility\ObjectExtensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\BlankWorkbook.xlsx" />
+    <None Include="Assets\PresentationTemplate.pptx" />
+    <None Include="Resources\Blank.xlsx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Themes\SharedMapStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Extensions\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

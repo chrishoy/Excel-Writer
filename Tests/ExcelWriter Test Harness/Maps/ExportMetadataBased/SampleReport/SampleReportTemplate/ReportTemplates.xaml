@@ -1,0 +1,242 @@
+﻿<TemplateCollection xmlns="clr-namespace:ExcelWriter;assembly=ExcelWriter"
+                    TemplateFileName="ReportTemplateWorkbook.xlsx">
+
+  <TemplateCollection.CellStyleSelectors>
+    <!-- Used for colouring rows in tables -->
+    <PropertyValueCellStyleSelector Key="RowColourSelector"
+                                    PropertyName="Highlight">
+
+      <PropertyValueStyleKey Value="True" StyleKey="ValidationRowStyle"/>
+
+    </PropertyValueCellStyleSelector>
+  </TemplateCollection.CellStyleSelectors>
+
+
+  <!-- ============================================================= -->
+  <!--   WE MAY SPECIFY MORE LOCALY SCOPED STYLE RESOURCES HERE,     -->
+  <!--   WHICH CAN POTENTIALLY SUPPLEMENT EXISTING STYLES            -->
+  <!--   IF WE WISH...                                               -->
+  <!-- ============================================================= -->
+  <TemplateCollection.StyleResources>
+
+    <Style Key="ValidationRowStyle" BackgroundColour="#FFCCCC"/>
+    <CellStyle Key="ValidationColour" BackgroundColour="#FFCCCC" />
+
+    <CellStyle Key="TextCell" BasedOnKey="CellExport" FontFamily="Calibri" FontSize="10"/>
+    <CellStyle Key="NumberCell" BasedOnKey="NumberCellExport" FontFamily="Calibri" FontSize="10"/>
+    <CellStyle Key="ShortDateCellStyle" ExcelFormat="dd mmm yyyy" BasedOnKey="DateCellExport" FontFamily="Calibri" FontSize="10"/>
+    <CellStyle Key="ShortDateCellStyleCenter" BasedOnKey="ShortDateCellStyle" TextAlignment="Center"/>
+
+    <CellStyle Key="TextCellCenter" BasedOnKey="TextCell" TextAlignment="Center"/>
+    <CellStyle Key="TextCellRight" BasedOnKey="TextCell" TextAlignment="Right"/>
+    <CellStyle Key="TextCellBold" BasedOnKey="TextCell" FontWeight="Bold"/>
+    <CellStyle Key="TextCellBoldRight" BasedOnKey="TextCell" FontWeight="Bold" TextAlignment="Right"/>
+    <CellStyle Key="TextCellIndented1" BasedOnKey="TextCell" Indentation="1"/>
+    <CellStyle Key="TextCellBoldWrapIndented" BasedOnKey="TextCell" FontWeight="Bold" TextWrapping="WrapWithOverflow" Indentation="2"/>
+    <!--<CellStyle Key="TextCellBoldWithBorder" BasedOnKey="TextCellBold" BorderThickness="2" BorderColour="#FF006666" BackgroundColour="#FF66A3A3" FontColour="White" />-->
+    <CellStyle Key="TextCellBoldWithBorder" BasedOnKey="TextCellBold" BorderThickness="2" BorderColour="#FF006666" BackgroundColour="#B2D1D1" FontColour="#006666" />
+
+    <CellStyle Key="Number0DPCellEx" BasedOnKey="NumberCell" ExcelFormat="#,##0;[Red](#,##0)" />
+    <CellStyle Key="Percent0DPCellEx" BasedOnKey="NumberCell" ExcelFormat="0%;[Red](0%)" />
+    <CellStyle Key="NzNumber0DPCellEx" BasedOnKey="NumberCell" ExcelFormat="#,##0;[Red](#,##0); ;" />
+    <CellStyle Key="NzPercent0DPCellEx" BasedOnKey="NumberCell" ExcelFormat="0%;[Red](0%); ;" />
+
+    <CellStyle Key="Number2DPCellEx" BasedOnKey="NumberCell" ExcelFormat="#,##0.00;[Red](#,##0.00)" />
+    <CellStyle Key="Number2DPCellExBold" BasedOnKey="NumberCell" ExcelFormat="#,##0.00;[Red](#,##0.00)" FontWeight="Bold" />
+    <CellStyle Key="Percent2DPCellEx" BasedOnKey="NumberCell" ExcelFormat="0.00%;[Red](0.00%)" />
+    <CellStyle Key="NzNumber2DPCellEx" BasedOnKey="NumberCell" ExcelFormat="#,##0.00;[Red](#,##0.00); ;" />
+    <CellStyle Key="NzPercent2DPCellEx" BasedOnKey="NumberCell" ExcelFormat="0.00%;[Red](0.00%); ;" />
+
+    <CellStyle Key="Number4DPCellEx" BasedOnKey="NumberCell" ExcelFormat="#,##0.0000;[Red](#,##0.0000)" />
+    <CellStyle Key="Number4DPCellExBold" BasedOnKey="NumberCell" ExcelFormat="#,##0.0000;[Red](#,##0.0000)" FontWeight="Bold" />
+    <CellStyle Key="Percent4DPCellEx" BasedOnKey="NumberCell" ExcelFormat="0.0000%;[Red](0.0000%)" />
+    <CellStyle Key="NzNumber4DPCellEx" BasedOnKey="NumberCell" ExcelFormat="#,##0.0000;[Red](#,##0.0000); ;" />
+    <CellStyle Key="NzPercent4DPCellEx" BasedOnKey="NumberCell" ExcelFormat="0.0000%;[Red](0.0000%); ;" />
+
+    <CellStyle Key="Number6DPCellEx" BasedOnKey="NumberCell" ExcelFormat="#,##0.000000;[Red](#,##0.000000)" />
+    <CellStyle Key="Percent6DPCellEx" BasedOnKey="NumberCell" ExcelFormat="0.000000%;[Red](0.000000%)" />
+    <CellStyle Key="NzNumber6DPCellEx" BasedOnKey="NumberCell" ExcelFormat="#,##0.000000;[Red](#,##0.000000); ;" />
+    <CellStyle Key="NzPercent6DPCellEx" BasedOnKey="NumberCell" ExcelFormat="0.000000%;[Red](0.000000%); ;" />
+
+    <CellStyle Key="BooleanCellEx" BasedOnKey="TextCell" TextAlignment="Center"/>
+
+    <CellStyle Key="TableHeadingCellExport" BasedOnKey="HeaderExport" FontSize="12" FontWeight="Bold"/>
+    <CellStyle Key="RightTableHeadingCellExport" BasedOnKey="TableHeadingCellExport" TextAlignment="Right"/>
+    <CellStyle Key="TableHeadingShortDateLeftCellExport" BasedOnKey="HeaderExport"
+               ExcelFormat="dd mmm yyyy"
+               FontSize="12" FontWeight="Bold"
+               TextAlignment="Left"/>
+
+    <CellStyle Key="LeftDateCellExport" BasedOnKey="DateCellExport" TextAlignment="Left" />
+    <CellStyle Key="RightDateCellExport" BasedOnKey="DateCellExport" TextAlignment="Right" />
+    <CellStyle Key="LeftColumnHeaderExport" BasedOnKey="ColumnHeaderExport" TextAlignment="Left" />
+    <CellStyle Key="RightColumnHeaderExport" BasedOnKey="ColumnHeaderExport" TextAlignment="Right" />
+    <CellStyle Key="BoldLeftCellExport" BasedOnKey="TextCell" FontWeight="Bold" TextAlignment="Left" />
+
+    <CellStyle Key="TableBorderStyle"
+               BorderThickness="2"
+               BorderColour="#FF006666"/>
+  </TemplateCollection.StyleResources>
+
+  <TemplateCollection.Maps>
+
+    <!-- =================================== -->
+    <!-- SampleReportGroupTable Templates    -->
+    <!-- =================================== -->
+
+    <!-- Writes Table Headings -->
+    <StackPanel Orientation="Horizontal" Key="SampleReportGroupTableColumnHeadings">
+      <Cell Value="Group/Code" Width="16" CellStyleKey="LeftColumnHeaderExport"/>
+      <Cell Value="Message" Width="100" CellStyleKey="ColumnHeaderExport" />
+    </StackPanel>
+    
+    <!-- Writes a Group Table Row -->
+    <StackPanel Orientation="Vertical" Key="ReportGroupTableRow">
+      
+      <!-- Group Heading Row -->
+      <StackPanel Orientation="Horizontal" SpanLastColumn="True">
+        <Cell Value="{Binding GroupHeading}" 
+              CellStyleKey="TextCellBoldWithBorder" 
+              SpanLastColumn="True" Height="18"/>
+      </StackPanel>
+
+      <!-- Group details (Repeating list of report rows -->
+      <ContentControl ContentKey="ReportRowTable"/>
+
+    </StackPanel>
+
+    <!-- ================================ -->
+    <!-- WorksheetHeading Templates -->
+    <!-- ================================ -->
+    <Cell Key="SubHeading"
+          SpanLastColumn="True"
+          Value="{Binding}"/>
+
+    <!-- Writes the header for an instrument summary sheet to a worksheet -->
+    <StackPanel Key="WorksheetHeading"
+                Orientation="Vertical"
+                SpanLastColumn="True">
+
+      <!-- Worksheet Heading and SubHeading (Defined the width of the page) -->
+      <Cell CellStyleKey="HeaderExport"
+            SpanLastColumn="True"
+            Value="{Binding Heading}"/>
+
+      <!-- Worksheet sub-headings -->
+      <StackPanel ItemsSource="{Binding SubHeadings}"
+                  ItemTemplateMapKey="SubHeading"
+                  Orientation="Vertical"
+                  CellStyleKey="TableHeadingCellExport"
+                  SpanLastColumn="True"/>
+
+    </StackPanel>
+    
+    <!-- ======================== -->
+    <!-- SampleReportRow Table  -->
+    <!-- ======================== -->
+    <StackPanel Key="ReportRowTable"
+                Orientation="Vertical">
+
+      <Table HideColumnsHeader="true"
+             RowStyleSelectorKey="RowColourSelector">
+        
+        <Table.TableData>
+
+          <TableData ItemsSource="{Binding Rows}">
+
+            <TableColumn CellStyleKey="TextCellIndented1"
+                         DisplayMember="Code"/>
+
+            <TableColumn CellStyleKey="TextCellBoldRight"
+                         DisplayMember="Message"/>
+          </TableData>
+        
+        </Table.TableData>
+
+      </Table>
+
+      <Cell/>      
+      
+    </StackPanel>
+
+    <!-- ============================ -->
+    <!-- SampleReportGroup Table    -->
+    <!-- ============================ -->
+    <StackPanel Key="SampleReportGroupTable"
+                Orientation="Vertical"
+                CellStyleKey="TableBorderStyle">
+
+      <!-- Table Column Headings -->
+      <ContentControl ContentKey="SampleReportGroupTableColumnHeadings"/>
+
+      <!-- Repeating Rows -->
+      <StackPanel Orientation="Vertical"
+                  ItemsSource="{Binding Groups}"
+                  ItemTemplateMapKey="ReportGroupTableRow"/>
+
+    </StackPanel>
+
+    <!-- ================================================== -->
+    <!--   Sample Report Layout and Content                 -->
+    <!-- ================================================== -->
+    <StackPanel Key="SampleReportContentTemplate"
+                Orientation="Vertical"
+                CellStyleKey="TableBorderStyle">
+
+      <!-- The HEADING -->
+      <ContentControl ContentKey="WorksheetHeading"/>
+
+      <!-- The VALIDATION MESSAGE AREA -->
+      <Cell Height="5"/>
+
+      <!-- The MAIN TABLE AREA (Goups of tables) -->
+      <ContentControl ContentKey="SampleReportGroupTable"/>
+      
+      <Cell Height="20"/>
+
+      <Table>
+        
+        <Table.TableData>
+
+          <TableData Key="MyTableData"
+                     ItemsSource="{Binding Data}">
+
+            <TableColumn CellStyleKey="TextCellCenter"
+                         DisplayMember="X" Header="X"/>
+
+            <TableColumn CellStyleKey="TextCellCenter"
+                         DisplayMember="Y" Header="Y"/>
+          </TableData>
+        
+        </Table.TableData>
+
+      </Table>
+
+      <Chart TableDataKey="MyTableData" 
+             ChartTemplateKey="MyTemplateChart" 
+             SpanLastColumn="True" 
+             RowSpan="10"/>
+      
+      <Cell Height="20"/>
+
+    </StackPanel>
+
+  </TemplateCollection.Maps>
+  
+  <!-- ============================================================= -->
+  <!--                         TEMPLATES                             -->
+  <!-- ============================================================= -->
+  <Template DataTemplateSheet="Sample Report"
+            TemplateId="SampleReportTemplate"
+            Title="Sample Report">
+    
+    <StackPanel Orientation="Vertical">
+      
+      <!--  Shows the use of a Reusable Map (defined above) -->
+      <ContentControl ContentKey="SampleReportContentTemplate" />
+    
+    </StackPanel>  
+
+  </Template>
+  
+</TemplateCollection>

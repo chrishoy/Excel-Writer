@@ -1,0 +1,167 @@
+﻿<ResourceMetadata xmlns="clr-namespace:Gam.MM.Framework.Export.Map;assembly=MM.Framework.Export.Map"
+                  DesignerFileName="ReportTemplateWorkbook.xlsx">
+
+    <!-- ============================================================= -->
+    <!--   A FEW CELL STYLES TO SUPPLEMENT EXISTING STYLES             -->
+    <!-- ============================================================= -->
+    <CellStyle Key="SubHeaderExportAlignLeft"
+               BasedOnKey="SubHeaderExport"
+               FontSize="12"
+               TextAlignment="Left" />
+        
+    <!-- GAM Green Border -->
+    <CellStyle Key="BorderedCells"
+               BorderThickness="2"
+               BorderColour="#006666" />
+
+    <!-- GAM Green Background -->
+    <CellStyle Key="GamGreenBackground"
+               BackgroundColour="#006666" />
+
+    <!-- GAM Green Background -->
+    <CellStyle Key="CentredText"
+               BasedOnKey="CellExportBase"
+               TextAlignment="Center"
+               FontWeight="Bold" />
+
+    <!-- ====================================================================== -->
+    <!--   A TEMPLATE PICTURE - REFERENCES A PICTURE IN THE DESIGNER WORKBOOK   -->
+    <!-- ====================================================================== -->
+    <PictureTemplate Key="InTemplate.GamLogo"
+                     TemplatePictureName="InTemplate.GamLogo"
+                     TemplateSheetName="_Template"/>
+
+    <!-- ====================================================================== -->
+    <!--   A TEMPLATE SHAPE - REFERENCES A SHAPE IN THE DESIGNER WORKBOOK       -->
+    <!-- ====================================================================== -->
+    <ShapeTemplate Key="InTemplate.SmileyFace"
+                   TemplateShapeName="InTemplate.SmileyFace"
+                   TemplateSheetName="_Template"/>
+
+    <!-- ================================================================= -->
+    <!-- A Smiley Face This time, elements properties                      -->
+    <!-- such as height and width, offset, are tweaked via binding         -->
+    <!-- ================================================================= -->
+    <Shape Key="SmileyFaceTemplate"
+           ShapeTemplateKey="InTemplate.SmileyFace"
+           Height="40" Width="10">
+        
+        <Shape.Placement>
+            <Placement Height="{Binding Path=Height}"
+                       Width="{Binding Path=Width}"
+                       VerticalOffset="5"
+                       HorizontalOffset="1"/>
+        </Shape.Placement>
+        
+    </Shape>
+
+    <!-- ======================================== -->
+    <!-- The heading, sub-heading, and GAM Logo   -->
+    <!-- ======================================== -->
+    <StackPanel Key="HeadingMap"
+                Orientation="Vertical"
+                SpanLastColumn="True">
+
+        <!-- Cell that spans across the page as a heading -->
+        <Cell CellStyleKey="HeaderExport"
+              SpanLastColumn="True"
+              Value="Pictures and Shapes" />
+
+        <!-- The thin white line -->
+        <Cell SpanLastColumn="True" Height="1.5" />
+
+        <!-- A sub-heading with an embedded GAM Logo image -->
+        <StackPanel Orientation="Horizontal"
+                    SpanLastColumn="True">
+
+            <!-- The sub-heading -->
+            <Cell CellStyleKey="SubHeaderExport"
+                  Width="70" Height="22"
+                  Value="Worksheet Sub-Heading..... with a logo" />
+
+            <!-- The GAM Logo -->
+            <Picture CellStyleKey="GamGreenBackground"
+                     SpanLastColumn="True"
+                     PictureTemplateKey="InTemplate.GamLogo"
+                     Width="10">
+                
+                <Picture.Placement>
+                    <Placement Height="10"
+                               Width="9"
+                               VerticalOffset="6"
+                               HorizontalOffset="1"/>
+                </Picture.Placement>
+
+            </Picture>
+
+        </StackPanel>
+
+        <!-- A Padding Row-Cell -->
+        <Cell Height="10" />
+
+    </StackPanel>
+
+    <!-- ======================================================= -->
+    <!--  A RE-USABLE MAP (GOES IN THE SHEET)                    -->
+    <!-- ======================================================= -->
+    <StackPanel Key="PictureMap"
+                Orientation="Vertical">
+
+        <!-- The heading, sub-heading and Logo -->
+        <ContentControl ContentKey="HeadingMap" />
+
+        <!-- A Padding Row-Cell -->
+        <Cell Height="10" />
+        
+        <!-- ================================================================= -->
+        <!-- The GAM Logo (again) This time, elements properties               -->
+        <!-- such as height and width, offset, are unchanged from the Template -->
+        <!-- ================================================================= 
+        <Cell CellStyleKey="CentredText"
+              SpanLastColumn="True"
+              Value="The picture below has unmodified element properties"/>
+              
+        <Picture PictureTemplateKey="InTemplate.GamLogo"
+                 SpanLastColumn="True"
+                 Height="100" />-->
+
+        <!-- ================================ -->
+        <!--  A list of SmileyFaces (Why not) -->
+        <!-- ================================ 
+        <Cell CellStyleKey="CentredText"
+              SpanLastColumn="True"
+              Height="36">
+            The shapes below, in StackPanel bound to VariousSizes array,
+            have bound element properties (Placement.Height + Placement.Width)
+        </Cell>
+              
+        <StackPanel Orientation="Horizontal"
+                    ItemsSource="{Binding VariousSizes}"
+                    ItemTemplateMapKey="SmileyFaceTemplate" />-->
+
+        <!-- ================================================================= -->
+        <!-- The GAM Logo (again) This time, elements properties               -->
+        <!-- such as height and width, offset, are tweaked                     -->
+        <!-- ================================================================= -->
+        <Cell CellStyleKey="CentredText"
+              SpanLastColumn="True"
+              Height="54" Value="The picture below has fixed element properties&#x0d;&#x0a;Placement.Height='40' Placement.Width='40'&#x0d;&#x0a;Placement.VerticalOffset='5' Placement.HorizontalOffset='20'">
+              
+        </Cell>
+              
+        <Picture PictureTemplateKey="InTemplate.GamLogo"
+                 SpanLastColumn="True"
+                 Height="50">
+            
+            <Picture.Placement>
+                <Placement Height="40"
+                           Width="40"
+                           VerticalOffset="5"
+                           HorizontalOffset="20" />
+            </Picture.Placement>
+            
+        </Picture>
+                 
+    </StackPanel>
+            
+</ResourceMetadata>

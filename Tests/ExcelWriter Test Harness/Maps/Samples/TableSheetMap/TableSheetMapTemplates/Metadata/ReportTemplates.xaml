@@ -1,0 +1,37 @@
+﻿<ResourceMetadata xmlns="clr-namespace:Gam.MM.Framework.Export.Map;assembly=MM.Framework.Export.Map"
+                  DesignerFileName="ReportTemplateWorkbook.xlsx">
+    
+    <!-- Some cell styles (GAM Green 100%) -->
+    <CellStyle Key="BC3" BorderThickness="3" BorderColour="#FF006666" />
+    <CellStyle Key="BC1" BorderThickness="1" BorderColour="#FF006666" TextAlignment="Center"/>
+    <CellStyle Key="H1"  BackgroundColour="#FF006666" FontColour="White" FontWeight="Bold" FontSize="20" />
+ 
+    <!-- ======================================= -->
+    <!--   TableSheetMapTemplate                 -->
+    <!-- ======================================= -->
+    <StackPanel Key="TableSheetMapTemplate"
+                Orientation="Vertical"
+                CellStyleKey="BC3">
+
+        <Table Header="Table Header"
+               SubHeader="Table Sub-Header"
+               Footer="Table Footer"	
+               SubFooter="Table Sub-Footer"
+               ItemsSource="{Binding ExportRows}">
+
+            <!-- Properties written above the table -->
+            <Table.Properties>
+                <Property Header="LOST PROPERTY" Value="MISSING" Visibility="Collapsed" />
+                <Property Header="Number of Rows" Value="{Binding ExportRows.Count}" />
+                <Property Header="Current Date" Value="{Binding CurrentDate}" CellStyleKey="DateCellExport" />
+            </Table.Properties>
+
+            <TableColumn CellStyleKey="DateCellExport"
+                         DisplayMember="SampleDate"
+                         Header="{Binding FirstColumnHeading}"
+                         Width="20" />
+        </Table>
+        
+    </StackPanel>
+
+</ResourceMetadata>
